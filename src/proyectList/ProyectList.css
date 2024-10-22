@@ -1,0 +1,15 @@
+.proyect-list-container {
+    padding: 20px;
+  }
+  
+  .proyect-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+  
+  h2 {
+    text-align: center;
+    color: #333;
+  }
+  
