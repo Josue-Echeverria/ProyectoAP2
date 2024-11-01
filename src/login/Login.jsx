@@ -1,14 +1,32 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { verifyUser } from '../api/api.js';
 import "./Login.css";
 
 const Login = () => {
-  const [email, setEmail] = useState("");
+  const [userName, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleSubmit = (e) => {
+  const navigate = useNavigate();
+  const handleSubmit = async (e) => {
     // TODO : QUE AGREGUE LOS CREDENCIALES DEL USUARIO A UNA SESSION
     e.preventDefault();
-    window.location.replace(`http://localhost:3000/`)
+    //window.location.replace(`http://localhost:3000/`)
+    try {
+      const data = await verifyUser(userName, password);
+      console.log('Sending:', { userName, password });
+      if (data.existe) {
+        if (data.isAdmin) {
+          navigate('/proyect');
+        } else {
+          navigate('/proyect');
+        }
+      } else {
+        alert('User does not exist or invalid credentials.');
+      }
+    } catch (error) {
+      alert('An error occurred while trying to verify the user.' + {error});
+    }
   };
 
   return (
@@ -17,12 +35,12 @@ const Login = () => {
         <h2>Login</h2>
         
         <div className="input-group">
-          <label htmlFor="email">Email</label>
+          <label htmlFor="userName">Username</label>
           <input
-            type="email"
-            id="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            type="userName"
+            id="userName"
+            value={userName}
+            onChange={(e) => setUsername(e.target.value)}
             required
           />
         </div>
@@ -40,6 +58,7 @@ const Login = () => {
         
         <button type="submit" className="login-button">Login</button>
       </form>
+      <div><button className="register-button" style={{ marginTop: "20px" }} onClick={() => navigate('/register')}>Register</button></div>
     </div>
   );
 };

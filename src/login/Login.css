@@ -49,7 +49,7 @@ body {
   }
   
   /* Botón de login */
-  .login-button {
+  .login-button, .register-button {
     width: 100%;
     padding: 10px;
     background-color: #4CAF50;
