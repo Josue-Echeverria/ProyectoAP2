@@ -1,4 +1,5 @@
 .proyect-item {
+    position: relative;
     border: 1px solid #ddd;
     padding: 15px;
     border-radius: 8px;
@@ -6,6 +7,7 @@
     background-color: #fff;
     width: 200px;
     transition: box-shadow 0.3s ease;
+    cursor: pointer;
   }
   
   .proyect-item:hover {
@@ -31,3 +33,25 @@
     color: #4CAF50;
   }
   
+  .proyect-item img {
+    width: 100%;
+    border-radius: 8px;
+  }
+
+  .proyect-item .end-date {
+    position: absolute;
+    bottom: 0; /* Ensures it stays at the bottom */
+    margin-bottom: 4px; /* Ensures consistent distance */
+    font-weight: bold;
+  }
+
+  .proyect-item button {
+    width: 100%;
+    padding: 10px;
+    background-color: #4CAF50;
+    color: white;
+    font-size: 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
