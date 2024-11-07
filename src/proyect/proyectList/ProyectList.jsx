@@ -1,8 +1,8 @@
 import React, { useState, useEffect }  from "react";
 import ProyectItem from "../proyectItem/ProyectItem";
-import { getAllProjects } from "../api/api";
+import { getAllProjects } from "../../api/api";
 import "./ProyectList.css";
-import Header from "../Header/Header";
+import Header from "../../Header/Header";
 import { useNavigate } from "react-router-dom";
 
 const ProyectList = () => {

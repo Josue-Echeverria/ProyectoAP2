@@ -10,7 +10,7 @@ const ProyectItem = ({ project }) => {
       <span className="gathered-amount">Gathered: ${project.gathered.toFixed(2)}</span>
       <img src={project.logo} alt={`${project.name} logo`} />
       <p className="end-date">End Date: {project.endDate}</p>
-      {/*<button>Donate</button> */} 
+      <button>Donate</button> 
     </div>
   );
 };

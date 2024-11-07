@@ -1,0 +1,30 @@
+.donation-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 15px;
+    border-bottom: 1px solid #ddd;
+    background-color: #fff;
+  }
+  
+  .donation-item:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+  
+  .donor-name {
+    font-weight: bold;
+    color: #333;
+    flex: 1;
+  }
+  
+  .donation-amount {
+    color: #4CAF50;
+    flex: 0.5;
+    text-align: right;
+  }
+  
+  .project-name {
+    flex: 1;
+    text-align: right;
+    color: #555;
+  }
+  

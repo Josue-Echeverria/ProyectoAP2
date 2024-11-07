@@ -3,9 +3,12 @@ import React from 'react';
 import { Route, Routes } from "react-router-dom";
 import Login from './login/Login';
 import Register from './register/Register';
-import ProyectList from './proyectList/ProyectList';
-import ProyectDetails from './proyectDetail/ProyectDetail';
+import ProyectList from './proyect/proyectList/ProyectList';
+import ProyectDetails from './proyect/proyectDetail/ProyectDetail';
 import CreateProject from './createProject/CreateProject';
+import DonationList from './proyect/donations/donationList/DonationList';
+import Stats from './stats/Stats';
+import UserList from './users/userList/UserList';
 
 function App() {
   return (
@@ -17,7 +20,10 @@ function App() {
         <Route path="/proyect" element={<ProyectList />} />
         <Route path="/proyect/:id" element={<ProyectDetails />} />
         <Route path="/createProject" element={<CreateProject/>} />
-
+        {/* ADMIN */}
+        <Route path="/donations" element={<DonationList/>} />
+        <Route path="/users" element={<UserList/>} />
+        <Route path="/stats" element={<Stats/>} />
       </Routes>
     </div>
   );
