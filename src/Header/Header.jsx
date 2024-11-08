@@ -12,8 +12,15 @@ function Header(props) {
           <a class="active" href="#home">
             Home
           </a>
-          <a onClick={props.clickCreateForm}href="#Create Project">Create Project</a>
-          <a href="#My projects">My projects</a>
+          <a onClick={props.clickCreateForm}href="#Create Project">
+            Create Project
+          </a>
+          <a href="#My projects">
+            My projects
+          </a>
+          <a href="/profile">
+          <i class="fa-solid fa-user"></i>
+          </a>
         </div>
       </div>
     </header>
