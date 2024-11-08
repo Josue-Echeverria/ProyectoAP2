@@ -9,6 +9,8 @@ import CreateProject from './createProject/CreateProject';
 import DonationList from './proyect/donations/donationList/DonationList';
 import Stats from './stats/Stats';
 import UserList from './users/userList/UserList';
+import ProyectList from './proyectList/ProyectList';
+import ProyectDetails from './proyectDetail/ProyectDetail';
 import UserProfile from './users/userProfile/UserProfile';
 
 function App() {
