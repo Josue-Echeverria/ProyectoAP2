@@ -289,3 +289,24 @@ export const getProjectByName = async (creatorName) => {
   throw error;
   }
 };
+
+export const deactivateUser = async (username) => {
+  try {
+    const response = await fetch(`${API_BASE_URL}/deactivateUser`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ username }),
+    });
+
+    if (!response.ok) {
+      throw new Error('Network response was not ok');
+    }
+
+    return await response.json();
+  } catch (error) {
+    console.error('Error in deactivateUser API call:', error);
+    throw error;
+  }
+}

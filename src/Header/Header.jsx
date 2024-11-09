@@ -4,6 +4,11 @@ import "./Header.css";
 function Header(props) {
   return (
     <header class="header">
+      {props.isAdmin ? (
+        <a href="login">
+          Cerrar sesion
+        </a>
+        ):(
       <div >
         <a href="#default" class="logo">
           Crowdfunding
@@ -15,14 +20,12 @@ function Header(props) {
           <a onClick={props.clickCreateForm}href="#Create Project">
             Create Project
           </a>
-          <a href="#My projects">
-            My projects
-          </a>
           <a href="/profile">
           <i class="fa-solid fa-user"></i>
           </a>
         </div>
       </div>
+    )}
     </header>
   );
 }

@@ -4,6 +4,7 @@ import Header from "../../Header/Header";
 import {getAllProjects, getAllDonations} from "../../api/api";
 import ProyectItem from "../../proyect/proyectItem/ProyectItem";
 import DonationItem from "../../proyect/donations/donationItem/DonationItem";
+import DonationList from "../../proyect/donations/donationList/DonationList";
 
 const UserProfile = ({ userData }) => {
     const [isEditing, setIsEditing] = useState(false);
@@ -53,7 +54,7 @@ const UserProfile = ({ userData }) => {
             <Header  />
             <div className="user-profile">
                 <div className="informacion-title">
-                    <h1>Tu información</h1>
+                    <h1>Mi información</h1>
                     <i className="fa-solid fa-pencil" onClick={handleEditClick}></i>
                 </div>
                 <div className="user-info">
@@ -136,14 +137,7 @@ const UserProfile = ({ userData }) => {
                     ))}    
                 </div>
             </div>
-            <div className="donation-container">
-                <h1>Mis donaciones</h1>
-                <div className="my-donation-list">
-                    {donations && donations.map((donation) => (
-                        <DonationItem donation={donation} />
-                    ))}
-                </div>
-            </div>
+            <DonationList/>
         </div>
     );
 };

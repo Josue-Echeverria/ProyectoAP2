@@ -1,15 +1,19 @@
 import React from "react";
 import UserItem from "../userItem/UserItem";
 import "./UserList.css";
+import { getAllUsers } from "../../api/api";
 
 const UserList = () => {
-  const users = [
-    { id: 1, name: "Juan Pérez", email: "juan@example.com", role: "Admin" },
-    { id: 2, name: "María García", email: "maria@example.com", role: "User" },
-    { id: 3, name: "Carlos López", email: "carlos@example.com", role: "User" },
-    { id: 4, name: "Ana Torres", email: "ana@example.com", role: "Admin" },
-  ];
+  const [users, setUsers] = React.useState([]);
+  async function fetchUsers() {
+    const data = await getAllUsers();
+    setUsers(data);
+  }
 
+  React.useEffect(() => {
+    fetchUsers();
+  }, []);
+  
   return (
     <div className="user-list-container">
       <h2>Lista de Usuarios</h2>

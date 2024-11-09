@@ -13,13 +13,13 @@ import {
 
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend);
 
-const LineChart = () => {
+const LineChart = (props) => {
   const data = {
-    labels: ["January", "February", "March", "April", "May", "June"],
+    labels: props.labels,
     datasets: [
       {
-        label: "Donations Over Time",
-        data: [500, 700, 800, 550, 900, 1200],
+        label: props.label,
+        data: props.data,
         backgroundColor: "rgba(75, 192, 192, 0.2)",
         borderColor: "rgba(75, 192, 192, 1)",
         borderWidth: 2,

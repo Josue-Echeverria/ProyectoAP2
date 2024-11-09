@@ -9,9 +9,8 @@ import CreateProject from './createProject/CreateProject';
 import DonationList from './proyect/donations/donationList/DonationList';
 import Stats from './stats/Stats';
 import UserList from './users/userList/UserList';
-import ProyectList from './proyectList/ProyectList';
-import ProyectDetails from './proyectDetail/ProyectDetail';
 import UserProfile from './users/userProfile/UserProfile';
+import Admin from './admin/Admin';
 
 function App() {
   const userData = {
@@ -36,6 +35,7 @@ function App() {
         <Route path="/donations" element={<DonationList/>} />
         <Route path="/users" element={<UserList/>} />
         <Route path="/stats" element={<Stats/>} />
+        <Route path='/admin' element={<Admin/>} />
       </Routes>
     </div>
   );

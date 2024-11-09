@@ -6,7 +6,14 @@ const UserItem = ({ user }) => {
     <div className="user-item">
       <h3>{user.name}</h3>
       <p>Email: {user.email}</p>
-      <span className="user-role">{user.role}</span>
+      <p>Numero de teléfono: {user.phone}</p>
+      <p>Saldo: {user.wallet}</p>
+      
+      { user.isActive ? (
+        <button className="deactivate-button">Desactivar cuenta</button>
+      ):(
+        <button className="reactivate-button">Reactivar cuenta</button>
+      )}
     </div>
   );
 };

@@ -12,13 +12,13 @@ import {
 
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
 
-const BarChart = () => {
+const BarChart = (props) => {
   const data = {
-    labels: ["January", "February", "March", "April", "May", "June"],
+    labels: props.labels,
     datasets: [
       {
-        label: "New Users",
-        data: [10, 30, 20, 40, 60, 80],
+        label: props.label,
+        data: props.data,
         backgroundColor: "rgba(54, 162, 235, 0.6)",
       },
     ],
