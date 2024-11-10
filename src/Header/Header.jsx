@@ -14,14 +14,17 @@ function Header(props) {
           Crowdfunding
         </a>
         <div class="header-right">
-          <a class="active" href="#home">
+          <a class="active" href="/home">
             Home
           </a>
           <a onClick={props.clickCreateForm}href="#Create Project">
             Create Project
           </a>
+          <a href="/mentorship">
+            Mentoria
+          </a>
           <a href="/profile">
-          <i class="fa-solid fa-user"></i>
+            <i class="fa-solid fa-user"></i>
           </a>
         </div>
       </div>

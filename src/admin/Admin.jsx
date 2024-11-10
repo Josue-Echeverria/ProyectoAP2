@@ -29,11 +29,11 @@ const Admin = () => {
             <Stats/>
             <div className="middle">
                 <DonationList/>
-                <UserList/>
+                <UserList  getMentors={false}/>
             </div>
-            <div className="my-proyect-container">
+            <div className="proyect-container">
                 <h1>Proyectos</h1>
-                <div className="my-proyect-list">
+                <div className="proyect-list">
                     {projects && projects.map((project) => (
                         <ProyectItem key={project._id} project={project} />
                     ))}    

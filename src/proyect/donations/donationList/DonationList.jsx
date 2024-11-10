@@ -20,9 +20,9 @@ const DonationList = () => {
   }, []); // Run once on mount
 
   return (
-    <div className="donation-container">
-      <h2>Lista de Donaciones</h2>
-      <div className="donation-list">
+    <div className="my-donation-container">
+      <h1>Lista de Donaciones</h1>
+      <div className="my-donation-list">
         {donations.length === 0 ? (<p>Cargando...</p>) : (
           donations.map((donation) => (
             <DonationItem key={donation.id} donation={donation} />

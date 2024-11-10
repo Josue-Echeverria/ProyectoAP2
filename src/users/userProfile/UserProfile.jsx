@@ -3,7 +3,6 @@ import "./UserProfile.css";
 import Header from "../../Header/Header";
 import {getAllProjects, getAllDonations} from "../../api/api";
 import ProyectItem from "../../proyect/proyectItem/ProyectItem";
-import DonationItem from "../../proyect/donations/donationItem/DonationItem";
 import DonationList from "../../proyect/donations/donationList/DonationList";
 
 const UserProfile = ({ userData }) => {

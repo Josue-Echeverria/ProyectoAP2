@@ -25,8 +25,6 @@ const ProyectList = () => {
 
   return (
     <div className="proyect-list-container">
-      <Header clickCreateForm={() => {
-    navigate('/createProject')}}/>
       <h2>Lista de Proyectos</h2>
       <div className="proyect-list">
         {projects && projects.map((project) => (

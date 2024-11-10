@@ -9,7 +9,7 @@
     color: #333;
   }
   
-.donation-container{
+.my-donation-container{
   position: relative;
   width: 25%;
   display: flex;
@@ -18,7 +18,7 @@
   padding: 20px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
-.donation-list{
+.my-donation-list{
   position: relative;
   width: 100%;
   display: flex;

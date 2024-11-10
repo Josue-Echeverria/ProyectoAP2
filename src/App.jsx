@@ -6,11 +6,10 @@ import Register from './register/Register';
 import ProyectList from './proyect/proyectList/ProyectList';
 import ProyectDetails from './proyect/proyectDetail/ProyectDetail';
 import CreateProject from './createProject/CreateProject';
-import DonationList from './proyect/donations/donationList/DonationList';
-import Stats from './stats/Stats';
-import UserList from './users/userList/UserList';
 import UserProfile from './users/userProfile/UserProfile';
 import Admin from './admin/Admin';
+import Mentorship from './mentorship/Mentorship';
+import Home from './home/Home';
 
 function App() {
   const userData = {
@@ -31,10 +30,9 @@ function App() {
         <Route path="/proyect/:id" element={<ProyectDetails />} />
         <Route path="/createProject" element={<CreateProject/>} />
         <Route path='/profile' element={<UserProfile userData={userData} />} />
+        <Route path='/mentorship' element={<Mentorship />} />
+        <Route path='/home' element={<Home />} />
         {/* ADMIN */}
-        <Route path="/donations" element={<DonationList/>} />
-        <Route path="/users" element={<UserList/>} />
-        <Route path="/stats" element={<Stats/>} />
         <Route path='/admin' element={<Admin/>} />
       </Routes>
     </div>

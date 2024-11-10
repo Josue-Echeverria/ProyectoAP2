@@ -9,7 +9,7 @@
 }
 
 
-.my-proyect-container{
+.proyect-container{
     position: relative;
     padding: 20px;
     width: 50%;
@@ -30,6 +30,6 @@
     width: 50%;
 }
 
-.my-proyect-container{
+.proyect-container{
     width: 100%;
 }
