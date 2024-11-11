@@ -5,6 +5,7 @@
     background-color: #f8f9fa;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-top: 80px;
   }
   
   .user-profile h2 {
@@ -27,6 +28,8 @@
   }
   .proyect-list-container {
     padding: 20px;
+    
+    
   }
   
   .my-proyect-list {
@@ -55,7 +58,7 @@
     display: flex;
     flex-direction: row;
     margin-top: 100px;
-    background-color: #f8f9fa;
+    background-color: #55a1e2;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     height: 100%;
@@ -68,5 +71,60 @@
   display: flex;
   flex-direction: column;
   max-height: 500px;
+  background-color: #f8f9fa;
+  border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
+/* Contenedor para toda la sección de perfil del usuario */
+.user-profile-container {
+  display: flex;
+  flex-direction: row;
+  gap: 20px; /* Añade espacio entre cada contenedor */
+  padding: 20px;
+  justify-content: space-between; /* Asegura que los contenedores estén separados */
+}
+
+/* Estilo de cada contenedor individual */
+.user-profile, .my-projects-container, .donations-container {
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 30%; /* Define el ancho de cada columna para que se distribuyan bien */
+  margin-top: 80px;
+}
+
+/* Título de cada sección */
+.user-profile h2, .my-projects-container h2, .donations-container h2 {
+  margin-bottom: 20px;
+  font-size: 1.5em;
+  text-align: center;
+}
+
+/* Contenedor principal para alinear los tres bloques en una fila */
+.user-profile-container {
+  display: flex;
+  flex-direction: row;
+  gap: 20px; /* Espacio entre los contenedores */
+  padding: 40px;
+  justify-content: space-between; /* Asegura que los contenedores estén distribuidos uniformemente */
+}
+
+/* Estilo de cada contenedor individual */
+.user-profile, .my-projects-container, .donations-container {
+  padding: 50px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 30%; /* Define el ancho de cada contenedor para que se distribuyan en tres columnas */
+}
+
+/* Título de cada sección */
+.user-profile h2, .my-projects-container h2, .donations-container h2 {
+  margin-bottom: 20px;
+  margin-top: 5px;
+  font-size: 1.5em;
+  text-align: center;
+}
+
+

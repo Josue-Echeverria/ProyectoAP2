@@ -1,23 +1,24 @@
-/* Style the header with a grey background and some padding */
+/* Estilo para el encabezado */
 .header {
-  position: fixed; /* Keeps the header at the top */
+  position: fixed; /* Fija el encabezado en la parte superior */
   top: 0;
-  left: 0; /* Ensures the header starts from the left edge */
-  width: 100%; /* Makes the header span the entire width */
-  z-index: 1000; /* Keeps the header above other elements */
-  background-color: #7fff6e;
+  left: 0; /* Asegura que el encabezado comience desde el borde izquierdo */
+  width: 100%; /* Hace que el encabezado abarque todo el ancho */
+  z-index: 1000; /* Mantiene el encabezado sobre otros elementos */
+  background-color: #4CAF50;
   padding: 20px 10px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Optional: adds a shadow */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra opcional */
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
+/* Contenedor para el contenido debajo del encabezado */
 .proyect-list-container {
-  margin-top: 80px; /* Adjust this value based on your header's height */
+  margin-top: 80px; /* Ajusta este valor según la altura del encabezado */
 }
 
-/* Style the header links */
+/* Estilo para los enlaces del encabezado */
 .header a {
   float: left;
   color: black;
@@ -29,42 +30,41 @@
   border-radius: 4px;
 }
 
-/* Style the logo link (notice that we set the same value of line-height and font-size to prevent the header to increase when the font gets bigger */
+/* Estilo específico para el logo "Crowdfunding" */
 .header a.logo {
   font-size: 25px;
   font-weight: bold;
+  text-align: left;
+  color: black; /* Color para el logo */
 }
 
-.header .logo {
-  flex: 1; /* Adjusts to take space as needed */
-}
-
-
-/* Change the background color on mouse-over */
-.header a:hover {
-  background-color: #ddd;
+/* Cambia el color de fondo al pasar el mouse por encima, excluyendo el logo */
+.header a:not(.logo):hover {
+  background-color: #8FB8DE;
   color: black;
 }
 
-/* Style the active/current link*/
+/* Estilo para el enlace activo */
 .header a.active {
   background-color: dodgerblue;
   color: white;
 }
 
+/* Contenedor de los enlaces alineados a la derecha */
 .header-right {
   display: flex;
-  gap: 15px; /* Adds space between links */
+  gap: 15px; /* Añade espacio entre los enlaces */
 }
 
+/* Estilos para pantallas pequeñas */
 @media screen and (max-width: 500px) {
   .header {
-    flex-direction: column; /* Stacks items vertically */
+    flex-direction: column; /* Apila los elementos verticalmente */
     align-items: flex-start;
   }
   .header a {
     display: block;
     text-align: left;
-    width: 100%; /* Ensures links span the full width */
+    width: 100%; /* Asegura que los enlaces ocupen todo el ancho */
   }
 }

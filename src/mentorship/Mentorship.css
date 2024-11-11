@@ -1,5 +1,5 @@
 .form-mentorship {
-    width: 50%;
+  width: 50%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -7,6 +7,7 @@
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   padding: 30px;
   height: 70%;
+  border-radius: 8px;   
 }
 
 .request-mentorship {
@@ -20,13 +21,15 @@
   height: 70%;
 }   
 
-.mentorship-screen{
+.mentorship-screen {
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
     height: 100vh;
-    background-color: #f5f5f5;
+    background: linear-gradient(135deg, #DDFF94, #283e51); /* Degradado de fondo */
+    padding: 20px; /* Espacio alrededor para que los contenedores no toquen el borde */
+    margin-top: 80px;
 }
 
 .mentorship-screen button{
@@ -44,6 +47,10 @@
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     padding-left: 10px;
     padding-right: 10px;
+}
+
+.mentorship-screen button:hover {
+    background-color: #8FB8DE;
 }
 
 .mentorship-screen p{
@@ -75,3 +82,31 @@
     width: 100%;
     padding: 0;
 }
+
+.form-mentorship, .request-mentorship {
+    width: 45%; /* Ajusta el ancho para que ambos contenedores se vean bien juntos */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    margin: 20px;
+    border-radius: 12px; /* Bordes redondeados */
+    background-color: white; /* Fondo blanco dentro del contenedor para contraste */
+    max-height: 80%; /* Limita la altura para que el texto esté contenido */
+  }
+  
+  .form-mentorship h1, .request-mentorship h1 {
+    font-size: 1.5em;
+    text-align: center;
+    margin-bottom: 15px;
+  }
+  
+  .form-mentorship p, .request-mentorship p {
+    font-size: 16px;
+    text-align: justify;
+    line-height: 1.5;
+    margin-bottom: 20px;
+  }
+  

@@ -3,32 +3,35 @@ import "./Header.css";
 
 function Header(props) {
   return (
-    <header class="header">
+    <header className="header">
       {props.isAdmin ? (
-        <a href="login">
-          Cerrar sesion
+        <a href="login" className="logout">
+          Cerrar sesión
         </a>
-        ):(
-      <div >
-        <a href="#default" class="logo">
-          Crowdfunding
-        </a>
-        <div class="header-right">
-          <a class="active" href="/home">
-            Home
+      ) : (
+        <div className="header-content">
+          <a href="#default" className="logo">
+            Crowdfunding
           </a>
-          <a onClick={props.clickCreateForm}href="#Create Project">
-            Create Project
-          </a>
-          <a href="/mentorship">
-            Mentoria
-          </a>
-          <a href="/profile">
-            <i class="fa-solid fa-user"></i>
-          </a>
+          <div className="header-right">
+            <a href="/home">
+              Inicio
+            </a>
+            <a onClick={props.clickCreateForm} href="/CreateProject">
+              Crear Proyecto
+            </a>
+            <a href="/mentorship">
+              Mentoria
+            </a>
+            <a href="/donar">
+              Donar a Proyecto
+            </a>
+            <a href="/profile">
+              <i className="fa-solid fa-user"></i>
+            </a>
+          </div>
         </div>
-      </div>
-    )}
+      )}
     </header>
   );
 }

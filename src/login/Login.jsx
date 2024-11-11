@@ -9,18 +9,12 @@ const Login = () => {
 
   const navigate = useNavigate();
   const handleSubmit = async (e) => {
-    // TODO : QUE AGREGUE LOS CREDENCIALES DEL USUARIO A UNA SESSION
     e.preventDefault();
-    //window.location.replace(`http://localhost:3000/`)
     try {
       const data = await verifyUser(userName, password);
       console.log('Sending:', { userName, password });
       if (data.existe) {
-        if (data.isAdmin) {
-          navigate('/proyect');
-        } else {
-          navigate('/proyect');
-        }
+        navigate('/proyect');
       } else {
         alert('User does not exist or invalid credentials.');
       }
@@ -31,6 +25,10 @@ const Login = () => {
 
   return (
     <div className="login-container">
+      <header className="login-header">
+        <h1>Crowdfunding</h1>
+      </header>
+      
       <form className="login-form" onSubmit={handleSubmit}>
         <h2>Login</h2>
         
@@ -58,7 +56,9 @@ const Login = () => {
         
         <button type="submit" className="login-button">Login</button>
       </form>
-      <div><button className="register-button" style={{ marginTop: "20px" }} onClick={() => navigate('/register')}>Register</button></div>
+      <div>
+        <button className="register-button" style={{ marginTop: "20px" }} onClick={() => navigate('/register')}>Register</button>
+      </div>
     </div>
   );
 };

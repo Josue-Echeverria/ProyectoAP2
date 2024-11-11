@@ -21,7 +21,6 @@ const DonationList = () => {
 
   return (
     <div className="my-donation-container">
-      <h1>Lista de Donaciones</h1>
       <div className="my-donation-list">
         {donations.length === 0 ? (<p>Cargando...</p>) : (
           donations.map((donation) => (

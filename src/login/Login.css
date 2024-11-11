@@ -1,13 +1,14 @@
 /* Estilos generales */
 body {
     font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
+    /*background-color: #f4f4f4;*/
     margin: 0;
     padding: 0;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
+    background: linear-gradient(135deg, #DDFF94, #283e51);
   }
   
   /* Contenedor del formulario */

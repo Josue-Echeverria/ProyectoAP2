@@ -21,6 +21,9 @@ const Register = () => {
 
   return (
     <div className="register-container">
+      <header className="login-header">
+        <h1>Crowdfunding</h1>
+      </header>
       <form className="register-form" onSubmit={handleSubmit}>
         <h2>Registro</h2>
         

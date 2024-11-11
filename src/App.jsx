@@ -10,6 +10,7 @@ import UserProfile from './users/userProfile/UserProfile';
 import Admin from './admin/Admin';
 import Mentorship from './mentorship/Mentorship';
 import Home from './home/Home';
+import Donar from './proyect/donations/DonaraProyecto/Donar';
 
 function App() {
   const userData = {
@@ -32,6 +33,7 @@ function App() {
         <Route path='/profile' element={<UserProfile userData={userData} />} />
         <Route path='/mentorship' element={<Mentorship />} />
         <Route path='/home' element={<Home />} />
+        <Route path='/donar' element={<Donar userData={userData}/>} />
         {/* ADMIN */}
         <Route path='/admin' element={<Admin/>} />
       </Routes>
