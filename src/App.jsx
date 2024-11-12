@@ -14,9 +14,9 @@ import Donar from './proyect/donations/DonaraProyecto/Donar';
 
 function App() {
   const userData = {
-    fullName: "John Doe",
+    fullName: "Harlen",
     id: "123456",
-    email: "jecheverria@estudiantec.cr",
+    email: "haquiros@estudiantec.cr",
     workArea: "Software Development",
     initialBalance: 1000,
     phone: "8888-8888"

@@ -76,7 +76,6 @@ const UserProfile = ({ userData }) => {
                     <h2>Mi información</h2> 
                     <div className="user-info">
                         <p><strong>Nombre:</strong> {editableData.name}</p>
-                        <p><strong>Numero de telefono:</strong> {editableData.phone}</p>
                         <p><strong>Email:</strong> {editableData.email}</p>
                         <p><strong>Área de trabajo:</strong> {editableData.workArea}</p>
                         <p><strong>Cantidad inicial de dinero en cartera:</strong> ₡{editableData.wallet}</p>
