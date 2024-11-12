@@ -4,30 +4,19 @@
   }
 
   
-  h2 {
+ 
+.my-donation-container h2{
     color: #333;
     text-align: center;
+    padding-top: 30;
   }
   
-.my-donation-container{
-  position: relative;
-  width: 75%;
-  display: flex;
-  flex-direction: column;
-  max-height: 800px;
-  padding: 20px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
 
 
-h2 {
-  text-align: center;
-  color: #333;
-}
 
 .my-donation-container{
 position: relative;
-width: 75%;
+width: 90%;
 display: flex;
 flex-direction: column;
 max-height: 800px;

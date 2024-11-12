@@ -376,3 +376,34 @@ export const getDonationsByMonth = async () => {
       console.error('Error in getMentor API call:', error);    
     }
   }
+
+  export const getMentorPending = async () => { 
+    try {
+      const response = await fetch(`${API_BASE_URL}/pendingMentors`, {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+          'ngrok-skip-browser-warning': 'any value', // Header to bypass the warning
+        },
+      });
+      return await response.json();
+    }
+    catch (error) {
+      console.error('Error in getMentorPending API call:', error);
+    }
+  }
+
+  export const updateMentorStatus = async (name, isMentor, price, experience) => {
+    try {
+      const response = await fetch(`${API_BASE_URL}/updateMentorStatus`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ name, isMentor, price , experience}),
+      });
+      return await response.json();
+    } catch (error) {
+      console.error('Error in updateMentorStatus API call:', error);
+    }
+  }

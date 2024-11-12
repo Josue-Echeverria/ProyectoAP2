@@ -4,6 +4,7 @@ import Header from '../Header/Header';
 import './Mentorship.css';
 import Modal from 'react-modal';
 import UserList from '../users/userList/UserList';
+import { updateMentorStatus } from '../api/api';
 
 const Mentorship = () => {
     const [formIsOpen, setFormIsOpen] = useState(false);
@@ -21,10 +22,9 @@ const Mentorship = () => {
         marginRight: '-50%',
         transform: 'translate(-50%, -50%)',
         width: '40%',
-        height: '60%',
+        height: '40%',
         display: 'flex',
         flexDirection: 'column',
-        justifyContent: 'space-between',
         },
     };
 
@@ -43,25 +43,13 @@ const Mentorship = () => {
         justifyContent: 'center',
         },
     };
+    const name = 'harlen';
  // TODO QUE HAGA UN SUBMIT MODIFICANDO AL USUARIO  
     const submitForm = async (e) => {
         e.preventDefault();
-        // try {
-        //     const data = await verifyUser(userName, password);
-        //     console.log('Sending:', { userName, password });
-        //     if (data.existe) {
-        //         if (data.isAdmin) {
-        //         navigate('/proyect');
-        //         } else {
-        //         navigate('/proyect');
-        //         }
-        //     } else {
-        //         alert('User does not exist or invalid credentials.');
-        //     }
-        // } catch (error) {
-        //     alert('An error occurred while trying to verify the user.' + {error});
-        // }
+        updateMentorStatus( name , 2, cost, experience);
         closeForm();
+        alert('Formulario enviado');
     };
 
     const openForm = () => {

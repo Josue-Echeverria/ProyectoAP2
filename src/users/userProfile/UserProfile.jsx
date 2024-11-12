@@ -1,37 +1,54 @@
 import React, { useState, useEffect } from "react";
 import "./UserProfile.css";
 import Header from "../../Header/Header";
-import { getProjectByName, getAllDonations, getUser, updateUser } from "../../api/api";
+import { getProjectByName, getAllDonations, getUser, updatePassword } from "../../api/api";
 import ProyectItem from "../../proyect/proyectItem/ProyectItem";
 import DonationList from "../../proyect/donations/donationList/DonationList";
+import Modal from "react-modal";
+import { useNavigate } from "react-router-dom";
 
 const UserProfile = ({ userData }) => {
-    const [isEditing, setIsEditing] = useState(false);
+    const [password, setPassword] = useState('');
+    const [newPassword, setNewPassword] = useState('');
     const [editableData, setEditableData] = useState(userData);
     const [projects, setProjects] = useState(null);
+    const [formIsOpen, setFormIsOpen] = useState(false);
     const [donations, setDonations] = useState(null);
     // TODO SET CURRENT USER
     const currentUser = 'harlen';
 
-
-    const handleCambiarContraseña = () => {
-        alert("Cambiar contraseña");
-    }
-    
-    const handleEditClick = () => {
-
-        setIsEditing(!isEditing);
+    const customStyles = {
+        content: {
+        top: '50%',
+        left: '50%',
+        right: 'auto',
+        bottom: 'auto',
+        marginRight: '-50%',
+        transform: 'translate(-50%, -50%)',
+        width: '40%',
+        height: '20%',
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'space-between',
+        },
     };
 
-    const handleChange = (e) => {
-        const { name, value } = e.target;
-        setEditableData({ ...editableData, [name]: value });
+    const openForm = () => {
+        setFormIsOpen(true);
+    };
+    const closeForm = () => {
+        setFormIsOpen(false);
     };
 
-    const handleCancelClick = () => {
-        setEditableData(userData);
-        setIsEditing(false);
+    const navigate = useNavigate();
+    const submitForm = async (e) => {
+        e.preventDefault();
+        
+        updatePassword(currentUser, newPassword);
+        navigate('/login');
+        closeForm();
     };
+
 
     const fetchUser = async () => {
         try {
@@ -82,7 +99,38 @@ const UserProfile = ({ userData }) => {
                         <p><strong>Cantidad inicial de dinero en cartera:</strong> ₡{editableData.wallet}</p>
                         <p><strong>Teléfono:</strong> {editableData.phone}</p>
                     </div>
-                    <button onClick={handleCambiarContraseña}>Cambiar contraseña</button>
+                    <button onClick={openForm} className="reactivate-button">Cambiar contraseña</button>
+                    <Modal 
+                        isOpen={formIsOpen}
+                        onRequestClose={closeForm}
+                        contentLabel="Mentorship Form"
+                        style={customStyles}
+                    >
+                        <form className='form1' onSubmit={submitForm}>
+                            <div className="question">
+                                <label>Contraseña actual:</label>
+                                <input 
+                                    name="password" 
+                                    value={password}
+                                    type="password"
+                                    onChange={(e)=>{setPassword(e.target.value)}}
+                                    required    
+                                ></input>
+                            </div>
+                            <div className="question">
+                                <label>Nueva contraseña:</label>
+                                <input 
+                                    name="newPassword"   
+                                    value={newPassword}
+                                    type="password"
+                                    onChange={(e)=>{setNewPassword(e.target.value)}}
+                                    required    
+                                ></input>
+                            </div>
+                            <button type="submit" className='send-button' >Enviar</button>
+                        </form>
+                        <button onClick={closeForm} className='close'>X</button>
+                    </Modal>
                 </div>
 
                 {/* Contenedor de Mis Proyectos */}

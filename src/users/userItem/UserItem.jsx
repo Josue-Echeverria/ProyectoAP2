@@ -1,6 +1,6 @@
 import React from "react";
 import "./UserItem.css";
-
+import { updateMentorStatus } from "../../api/api";
 const UserItem = ({ user , asMentor}) => {
   const truncateText = (text, maxLength) => {
     if(text){
@@ -11,6 +11,18 @@ const UserItem = ({ user , asMentor}) => {
     }
   };
 
+  const handleAccept = async () => {
+    const response = await updateMentorStatus(user.name, 1);
+    console.log(response);
+    window.location.reload();
+  }
+
+  const handleReject = async () => {
+    const response = await updateMentorStatus(user.name, 0);
+    console.log(response);
+    window.location.reload();
+  }
+
   return (
     <div className="user-item">
       
@@ -20,7 +32,8 @@ const UserItem = ({ user , asMentor}) => {
           <p>{user.workArea}</p>
           <p>{truncateText(user.experience, 85)}</p>
           <p>Precio: {user.price}</p>
-          <button className="reactivate-button">Contratar</button>
+          <button className="reactivate-button" onClick={handleAccept}>Aceptar</button>
+          <button className="deactivate-button" onClick={handleReject}>Rechazar</button>
         </div>
       ) : (
         <div className="userInfo">

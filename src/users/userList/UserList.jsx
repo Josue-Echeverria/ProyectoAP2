@@ -1,7 +1,7 @@
 import React from "react";
 import UserItem from "../userItem/UserItem";
 import "./UserList.css";
-import { getAllUsers, getMentor } from "../../api/api";
+import { getAllUsers, getMentor, getMentorPending } from "../../api/api";
 
 const UserList = (props) => {
   const [users, setUsers] = React.useState([]);
@@ -14,7 +14,10 @@ const UserList = (props) => {
     if(props.getMentors)
       fetchMentors();
     else
-      fetchUsers();
+      if(props.getMentorsPending)
+        fetchMentorsPending();
+      else
+        fetchUsers();
 
   }, []);
   // TODO fetch mentors from the API
@@ -22,7 +25,10 @@ const UserList = (props) => {
     const data = await getMentor();
     setUsers(data);
   }
-
+  async function fetchMentorsPending(){
+    const data = await getMentorPending();
+    setUsers(data);
+  }
   return (
     props.getMentors ? (
       <div className="user-list-container">

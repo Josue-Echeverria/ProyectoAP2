@@ -1,13 +1,18 @@
 import React, { useEffect } from "react";
 import DonationItem from "../donationItem/DonationItem";
 import "./DonationList.css";
-import { getDonations } from "../../../api/api";
+import { getDonations, getAllDonations } from "../../../api/api";
 
-const DonationList = () => {
+const DonationList = ({adminView}) => {
   const [donations, setDonations] = React.useState([]); // Initialize the state with an empty array
   const currentUser = 'harlen'; // TODO SET CURRENT USER
   const fetchDonations = async () => { // Keep this function async
     try {
+        if(adminView){
+            const donationsData = await getAllDonations(); // Fetch the donations
+            setDonations(donationsData); // Set the donations in the state
+            return;
+        }
         const donationsData = await getDonations(currentUser); // Fetch the donations
         setDonations(donationsData); // Set the donations in the state
     } catch (error) {
