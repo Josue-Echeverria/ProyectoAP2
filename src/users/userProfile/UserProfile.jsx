@@ -136,15 +136,16 @@ const UserProfile = ({ userData }) => {
                     <h2>Mis proyectos</h2>
                     <div className="my-project-list">
                         {projects && projects.map((project) => (
-                            <ProyectItem key={project._id} project={project} />
+                        <ProyectItem key={project._id} project={project} />
                         ))}
                     </div>
                 </div>
 
+
                 {/* Contenedor de Lista de Donaciones */}
-                <div className="donations-container">
+                <div className="donations-containe">
                     <h2>Lista de Donaciones</h2>
-                    <DonationList />
+                        <DonationList />
                 </div>
             </div>
         </div>

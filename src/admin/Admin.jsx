@@ -27,16 +27,21 @@ const Admin = () => {
         <div className='adminScreen'>
             <Header isAdmin={true} />
             <Stats/>
-            <div className="middle">
-                <DonationList/>
-                <UserList  getMentors={false}/>
-            </div>
-            <div className="proyect-container">
-                <h1>Proyectos</h1>
-                <div className="proyect-list">
-                    {projects && projects.map((project) => (
-                        <ProyectItem key={project._id} project={project} />
-                    ))}    
+            <div className="user-donations-container">
+                <div className="donations-container">
+                    <h2>Lista de Donaciones</h2>
+                    <DonationList />
+                </div>
+                <div className="user-container">
+                    <UserList  getMentors={false}/>
+                </div>
+                <div className="proyecto-container">
+                    <h2>Proyectos</h2>
+                    <div className="proyect-list">
+                        {projects && projects.map((project) => (
+                            <ProyectItem key={project._id} project={project} />
+                        ))}  
+                    </div>  
                 </div>
             </div>
 

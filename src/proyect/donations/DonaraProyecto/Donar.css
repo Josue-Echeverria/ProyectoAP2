@@ -32,6 +32,14 @@
     text-align: center;
 }
 
+.project-image {
+    width: 100px; /* Ajusta el ancho de la imagen */
+    height: 100px; /* Ajusta la altura de la imagen */
+    object-fit: cover; /* Ajusta el recorte para que se mantenga dentro del contenedor */
+    border-radius: 8px; /* Añade esquinas redondeadas si lo deseas */
+    margin-bottom: 10px; /* Añade un margen inferior para separación */
+  }
+
 /* Contenedor de la lista de proyectos con scroll */
 .project-list {
     display: flex;

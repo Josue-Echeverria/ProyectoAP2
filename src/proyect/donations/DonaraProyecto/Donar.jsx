@@ -1,31 +1,33 @@
 import React, { useState, useEffect } from "react";
 import Header from "../../../Header/Header";
 import "./Donar.css";
+import { getAllProjects } from "../../../api/api";
 
 const Donar = ({ userData }) => {
-  const [projects, setProjects] = useState([]);
-  const [filteredProjects, setFilteredProjects] = useState([]); // Estado para los proyectos filtrados
+  const [projects, setProjects] = useState([]); // Estado para almacenar todos los proyectos
+  const [filteredProjects, setFilteredProjects] = useState([]); // Estado para proyectos filtrados
   const [donationAmount, setDonationAmount] = useState({});
-  const [balance, setBalance] = useState(userData.initialBalance); // Inicializamos con `initialBalance`
-  const [searchTerm, setSearchTerm] = useState(""); // Estado para la búsqueda
+  const [balance, setBalance] = useState(userData.initialBalance); // Usando `initialBalance` del usuario
+  const [searchTerm, setSearchTerm] = useState(""); // Estado para el término de búsqueda
+
+  const fetchProjects = async () => {
+    try {
+      const projectsData = await getAllProjects(); // Llamada a la API
+      setProjects(projectsData); // Guardar los proyectos en el estado
+      setFilteredProjects(projectsData); // Inicialmente mostrar todos los proyectos
+    } catch (error) {
+      console.error("Error in fetchProjects:", error);
+    }
+  };
 
   useEffect(() => {
-    const initialProjects = [
-      { id: 1, name: "Proyecto 1", description: "Descripción del proyecto 1" },
-      { id: 2, name: "Proyecto 2", description: "Descripción del proyecto 2" },
-      { id: 3, name: "Proyecto 3", description: "Descripción del proyecto 3" },
-      { id: 4, name: "Proyecto 4", description: "Descripción del proyecto 4" },
-      { id: 5, name: "Proyecto 5", description: "Descripción del proyecto 5" },
-      { id: 6, name: "Proyecto 6", description: "Descripción del proyecto 6" },
-    ];
-    setProjects(initialProjects);
-    setFilteredProjects(initialProjects); // Inicializa los proyectos filtrados
+    fetchProjects(); // Obtener los proyectos al montar el componente
   }, []);
 
   const handleSearchChange = (e) => {
     const term = e.target.value;
     setSearchTerm(term);
-    // Filtra los proyectos en función del término de búsqueda
+    // Filtrar proyectos según el término de búsqueda
     const filtered = projects.filter((project) =>
       project.name.toLowerCase().includes(term.toLowerCase())
     );
@@ -43,8 +45,8 @@ const Donar = ({ userData }) => {
   const handleDonate = (projectId) => {
     const amount = donationAmount[projectId] || 0;
     if (amount > 0 && amount <= balance) {
-      setBalance(balance - amount); // Actualiza el saldo
-      alert(`Has donado ₡${amount} al ${projects.find(p => p.id === projectId).name}`);
+      setBalance(balance - amount); // Actualizar el saldo
+      alert(`Has donado ₡${amount} al proyecto ${filteredProjects.find(p => p.id === projectId).name}`);
       setDonationAmount({ ...donationAmount, [projectId]: 0 });
     } else {
       alert("Ingresa una cantidad válida para donar.");
@@ -71,7 +73,11 @@ const Donar = ({ userData }) => {
           {filteredProjects.map((project) => (
             <div key={project.id} className="project-card">
               <h3>{project.name}</h3>
+              <img src={project.logo} alt={`${project.name} logo`} className="project-image" />
               <p>{project.description}</p>
+              <p>Meta: ₡{project.goal.toFixed(2)}</p>
+              <p>Recaudado: ₡{project.gathered.toFixed(2)}</p>
+              <p>Fecha de finalización: {project.endDate}</p>
               <div className="donation-section">
                 <input
                   type="number"

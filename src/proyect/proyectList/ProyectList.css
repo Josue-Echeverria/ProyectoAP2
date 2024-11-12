@@ -1,15 +1,28 @@
 .proyect-list-container {
-    padding: 20px;
-  }
-  
-  .proyect-list {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-  }
-  
-  h2 {
-    text-align: center;
-    color: #333;
-  }
-  
+  max-height: 100vh; /* Limita la altura al tamaño de la pantalla */
+  overflow-y: auto; /* Permite scroll si el contenido excede la pantalla */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box; /* Incluye padding dentro de la altura total */
+  padding-top: 10px; /* Ajusta este valor para mover el contenido hacia arriba */
+  margin-top: 0; /* Elimina cualquier margen superior */
+}
+
+.proyect-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  width: 100%;
+  max-width: 1200px; /* Ajusta el ancho según tu preferencia */
+  max-height: 300px; /* Fija una altura máxima para activar el scroll */
+  overflow-y: auto; /* Activa el scroll vertical */
+  padding-right: 10px; /* Espacio entre el contenido y el scroll */
+}
+
+h2 {
+  text-align: center;
+  color: #333;
+  margin-top: 0; /* Asegura que el título no tenga margen superior */
+}

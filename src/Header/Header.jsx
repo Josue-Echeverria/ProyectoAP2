@@ -5,9 +5,14 @@ function Header(props) {
   return (
     <header className="header">
       {props.isAdmin ? (
-        <a href="login" className="logout">
-          Cerrar sesión
-        </a>
+        <div className="header-content">
+          <a href="#default" className="logo">
+            Crowdfunding Admin
+          </a>
+          <a href="login" className="logout">
+            Cerrar sesión
+          </a>
+        </div>
       ) : (
         <div className="header-content">
           <a href="#default" className="logo">
