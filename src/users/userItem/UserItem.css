@@ -6,6 +6,7 @@
     background-color: #fff;
     width: 200px;
     transition: box-shadow 0.3s ease;
+    justify-content: space-between;
   }
   
   .user-item:hover {
@@ -37,7 +38,6 @@
     border: none;
     border-radius: 5px;
     padding: 5px 10px;
-    margin-top: 10px;
     cursor: pointer;
   }
   
@@ -51,10 +51,14 @@
     border: none;
     border-radius: 5px;
     padding: 5px 10px;
-    margin-top: 10px;
     cursor: pointer;
+    bottom: 0;
   }
   
   .reactivate-button:hover {
     background-color: #388E3C;
+ }
+
+ .userInfo{
+  justify-content: space-between;
  }

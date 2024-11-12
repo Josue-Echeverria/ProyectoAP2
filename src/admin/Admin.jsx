@@ -7,7 +7,6 @@ import { getAllProjects } from '../api/api';
 import UserList from '../users/userList/UserList';
 import DonationList from '../proyect/donations/donationList/DonationList';
 
-
 const Admin = () => {
     const [projects, setProjects] = React.useState(null);
     
@@ -27,10 +26,19 @@ const Admin = () => {
         <div className='adminScreen'>
             <Header isAdmin={true} />
             <Stats/>
-            <div className="user-donations-container">
-                <div className="donations-container">
-                    <h2>Lista de Donaciones</h2>
-                    <DonationList />
+            <div className="middle">
+                <DonationList/>
+                <div className="user-list"> 
+                    <UserList  getMentors={false} getMentorsPending={false}/>
+                    <UserList  getMentors={false} getMentorsPending={true}/>
+                </div>
+            </div>
+            <div className="proyect-container">
+                <h1>Proyectos</h1>
+                <div className="proyect-list">
+                    {projects && projects.map((project) => (
+                        <ProyectItem key={project._id} project={project} />
+                    ))}    
                 </div>
                 <div className="user-container">
                     <UserList  getMentors={false}/>

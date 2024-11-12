@@ -1,4 +1,5 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
+import { useNavigate } from 'react-router-dom';
 import Header from '../Header/Header';
 import './Mentorship.css';
 import Modal from 'react-modal';
@@ -7,6 +8,9 @@ import UserList from '../users/userList/UserList';
 const Mentorship = () => {
     const [formIsOpen, setFormIsOpen] = useState(false);
     const [requestIsOpen, setRequestIsOpen] = useState(false);
+    const [reason, setReason] = useState('');
+    const [experience, setExperience] = useState('');
+    const [cost, setCost] = useState('');
 
     const customStyles = {
         content: {
@@ -20,10 +24,9 @@ const Mentorship = () => {
         height: '60%',
         display: 'flex',
         flexDirection: 'column',
-        justifyContent: 'center',
+        justifyContent: 'space-between',
         },
     };
-
 
     const customStylesMentor = {
         content: {
@@ -40,6 +43,26 @@ const Mentorship = () => {
         justifyContent: 'center',
         },
     };
+ // TODO QUE HAGA UN SUBMIT MODIFICANDO AL USUARIO  
+    const submitForm = async (e) => {
+        e.preventDefault();
+        // try {
+        //     const data = await verifyUser(userName, password);
+        //     console.log('Sending:', { userName, password });
+        //     if (data.existe) {
+        //         if (data.isAdmin) {
+        //         navigate('/proyect');
+        //         } else {
+        //         navigate('/proyect');
+        //         }
+        //     } else {
+        //         alert('User does not exist or invalid credentials.');
+        //     }
+        // } catch (error) {
+        //     alert('An error occurred while trying to verify the user.' + {error});
+        // }
+        closeForm();
+    };
 
     const openForm = () => {
         setFormIsOpen(true);
@@ -53,6 +76,16 @@ const Mentorship = () => {
     const closeRequest = () => {
         setRequestIsOpen(false);
     };
+
+
+    const navigate = useNavigate();
+    const isMentor = false; // TODO Replace with actual logic to determine if the user is a mentor
+
+    useEffect(() => {
+        if (isMentor) {
+            navigate('/mentor');
+        }
+    }, [isMentor, navigate]);
     return (
         <div>
             <Header />
@@ -72,28 +105,39 @@ const Mentorship = () => {
                         style={customStyles}
                     >
                         <h2>Formulario</h2>
-                        <form className='form1'>
+                        <form className='form1' onSubmit={submitForm}>
+                            
                             <div className="question">
-                                <label>Nombre:</label>
-                                <input type="text" name="name" />
-                            </div>
-                            <div className="question">
-                                <label>Correo Electrónico:</label>
-                                <input type="email" name="email" />
+                                <label>Porque quieres ser mentor:</label>
+                                <textarea 
+                                    name="experience" 
+                                    value={reason}
+                                    onChange={(e)=>{setReason(e.target.value)}}
+                                    required    
+                                ></textarea>
                             </div>
                             <div className="question">
                                 <label>Experiencia:</label>
-                                <textarea name="experience"></textarea>
+                                <textarea 
+                                    name="experience"   
+                                    value={experience}
+                                    onChange={(e)=>{setExperience(e.target.value)}}
+                                    required    
+                                ></textarea>
                             </div>
                             <div className="question">
                                 <label>Costo por mentoria:</label>
-                                <input type="number" name="cost" />
+                                <input 
+                                    type="number" 
+                                    name="cost" 
+                                    value={cost}
+                                    onChange={(e)=>{setCost(e.target.value)}}
+                                    required
+                                />
                             </div>
-                            <div className="checkboxes">
-                                <button type="submit">Enviar</button>
-                                <button type="button" onClick={closeForm}>Cerrar</button>
-                            </div>
+                            <button type="submit" className='send-button'>Enviar</button>
                         </form>
+                        <button onClick={closeRequest} className='close'>X</button>
                     </Modal>
                 </div>
                 <div className="request-mentorship">
@@ -110,6 +154,7 @@ const Mentorship = () => {
                         contentLabel="Mentorship Form"
                         style={customStylesMentor}
                     >
+                        <button onClick={closeRequest} className='close'>X</button>
                         <UserList getMentors={true}/>                        
                     </Modal>
                 </div>
