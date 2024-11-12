@@ -1,11 +1,87 @@
-/* Contenedor principal para alinear los tres bloques en una fila */
+.user-profile {
+    width: 20%;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-top: 80px;
+  }
+  
+  .user-profile h2 {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  .user-info {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    text-align: start;
+  }
+  .user-info p {
+    margin: 10px 0;
+    font-size: 1em;
+  }
+  
+  .user-info strong {
+    color: #333;
+  }
+  .proyect-list-container {
+    padding: 20px;
+    
+    
+  }
+  
+  .my-proyect-list {
+    position: relative;
+    display: flex;
+    max-height: 400px; /* Adjust the height as needed */
+    flex-wrap: wrap;
+    overflow: auto;
+    width: 100%;
+  }
+
+  
+.informacion-title{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-bottom: 20px;
+  justify-content: center;
+}
+.informacion-title h1{
+  margin-right: 10px;
+}
+
+  .workspace{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    margin-top: 100px;
+    background-color: #55a1e2;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    height: 100%;
+  }
+
+.my-proyect-container{
+  position: relative;
+  padding: 20px;
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+/* Contenedor para toda la sección de perfil del usuario */
 .user-profile-container {
   display: flex;
   flex-direction: row;
-  gap: 20px;
-  padding: 40px;
-  padding-top: 20px;
-  justify-content: space-between;
+  gap: 20px; /* Añade espacio entre cada contenedor */
+  padding: 20px;
+  justify-content: space-between; /* Asegura que los contenedores estén separados */
+  height: 20%;
 }
 
 /* Estilo de cada contenedor individual */
@@ -16,28 +92,35 @@
   border-radius: 8px;
   align-items: center;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  width: 30%;
-  max-height: 70vh;
-  box-sizing: border-box;
-}
-
-/* Contenedor de la lista de proyectos para agregar scroll interno */
-.my-projects-container {
-  display: flex;
-  flex-direction: column;
-}
-
-.my-projects-container .my-project-list {
-  max-height: 60vh; /* Limita la altura de la lista de proyectos */
-  overflow-y: auto; /* Activa el scroll vertical para los proyectos */
-  padding-right: 10px; /* Añade espacio para evitar que el scroll tape el contenido */
-  box-sizing: border-box;
-  align-items: center;
+  width: 30%; /* Define el ancho de cada columna para que se distribuyan bien */
+  margin-top: 80px;
+  max-height: 500px;
+  overflow: auto; /* Añade scroll si el contenido es muy largo */
 }
 
 /* Título de cada sección */
-.user-profile h2, .my-projects-container h2, .donations-containe h2 {
+.user-profile h2, .my-projects-container h2, .donations-container h2 {
   margin-bottom: 20px;
   font-size: 1.5em;
   text-align: center;
 }
+
+
+/* Estilo de cada contenedor individual */
+.user-profile, .my-projects-container, .donations-container {
+  padding: 50px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 30%; /* Define el ancho de cada contenedor para que se distribuyan en tres columnas */
+}
+
+/* Título de cada sección */
+.user-profile h2, .my-projects-container h2, .donations-container h2 {
+  margin-bottom: 20px;
+  margin-top: 5px;
+  font-size: 1.5em;
+  text-align: center;
+}
+
+

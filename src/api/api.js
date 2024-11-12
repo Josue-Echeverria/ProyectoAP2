@@ -33,6 +33,7 @@ export const addUser = async (name, email, password, phone, wallet) => {
     method: 'POST',
     headers: {
     'Content-Type': 'application/json',
+    'Access-Control-Allow-Origin':'no-cors',
     },
     body: JSON.stringify({ name, email, password, phone, wallet }),
   });

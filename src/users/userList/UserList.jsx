@@ -37,7 +37,7 @@ const UserList = (props) => {
       <div className="user-container-admin-view">
         {props.getMentorsPending ? (
           <>
-            <h2>Solicitudes de usuarios para ser mentores</h2>
+            <h1>Solicitudes de usuarios para ser mentores</h1>
             <div className="user-list-admin">
               {users.map((user) => (
                 <UserItem key={user.id} user={user} asMentor={true}/>
@@ -46,7 +46,7 @@ const UserList = (props) => {
           </>
         ):(
           <>
-            <h2>Lista de Usuarios</h2>
+            <h1>Lista de Usuarios</h1>
             <div className="user-list-admin">
             {users.map((user) => (
               <UserItem key={user.id} user={user} asMentor={false}/>

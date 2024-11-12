@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./CreateProject.css";
-import Header from "../Header/Header";
-
+import Header from "../../Header/Header";
+import { addProject } from "../../api/api";
 function CreateProject() {
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
@@ -13,8 +13,11 @@ function CreateProject() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+      // TODO set the creator name as the current user
+    const creator = "harlen";
+    addProject(name, description, goal, endDate, creator,logo);
     console.log({ name, description, goal, endDate, logo });
-    navigate('/proyect');
+    navigate('/profile');
   };
 
   return (
@@ -24,7 +27,6 @@ function CreateProject() {
       <div className="create-container">
         <form className="create-form" onSubmit={handleSubmit}>
           <h2>Create Project</h2>
-
           <div className="input-group">
             <label htmlFor="name">Nombre del proyecto</label>
             <input

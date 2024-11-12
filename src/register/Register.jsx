@@ -1,12 +1,17 @@
 import React, { useState } from "react";
 import "./Register.css";
-
+import { addUser } from "../api/api";
+import { useNavigate } from "react-router-dom";
 const Register = () => {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const [phone, setPhone] = useState("");
+  const [walletAmount, setWalletAmount] = useState("");
+  const [workArea, setWorkArea] = useState("");
 
+  const navigate = useNavigate();
   const handleSubmit = (e) => {
     e.preventDefault();
     if (password !== confirmPassword) {
@@ -17,6 +22,14 @@ const Register = () => {
     console.log("Username:", username);
     console.log("Email:", email);
     console.log("Password:", password);
+    console.log("Phone:", phone);
+    console.log("Wallet Amount:", walletAmount);
+    console.log("Work Area:", workArea);
+
+    addUser(username, email, password, phone, walletAmount, workArea);
+
+    // TODO set current user
+    navigate('/home');
   };
 
   return (
@@ -67,6 +80,39 @@ const Register = () => {
             id="confirmPassword"
             value={confirmPassword}
             onChange={(e) => setConfirmPassword(e.target.value)}
+            required
+          />
+        </div>
+
+        <div className="input-group">
+          <label htmlFor="phone">Teléfono</label>
+          <input
+            type="tel"
+            id="phone"
+            value={phone}
+            onChange={(e) => setPhone(e.target.value)}
+            required
+          />
+        </div>
+
+        <div className="input-group">
+          <label htmlFor="walletAmount">Monto en la Cartera</label>
+          <input
+            type="number"
+            id="walletAmount"
+            value={walletAmount}
+            onChange={(e) => setWalletAmount(e.target.value)}
+            required
+          />
+        </div>
+
+        <div className="input-group">
+          <label htmlFor="workArea">Área de Trabajo</label>
+          <input
+            type="text"
+            id="workArea"
+            value={workArea}
+            onChange={(e) => setWorkArea(e.target.value)}
             required
           />
         </div>

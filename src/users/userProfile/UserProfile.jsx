@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./UserProfile.css";
 import Header from "../../Header/Header";
-import { getAllProjects, getAllDonations } from "../../api/api";
+import { getProjectByName, getAllDonations, getUser, updateUser } from "../../api/api";
 import ProyectItem from "../../proyect/proyectItem/ProyectItem";
 import DonationList from "../../proyect/donations/donationList/DonationList";
 
@@ -10,8 +10,16 @@ const UserProfile = ({ userData }) => {
     const [editableData, setEditableData] = useState(userData);
     const [projects, setProjects] = useState(null);
     const [donations, setDonations] = useState(null);
+    // TODO SET CURRENT USER
+    const currentUser = 'harlen';
 
+
+    const handleCambiarContraseña = () => {
+        alert("Cambiar contraseña");
+    }
+    
     const handleEditClick = () => {
+
         setIsEditing(!isEditing);
     };
 
@@ -25,9 +33,19 @@ const UserProfile = ({ userData }) => {
         setIsEditing(false);
     };
 
+    const fetchUser = async () => {
+        try {
+            const userData = await getUser(currentUser);
+            console.log(userData);
+            setEditableData(userData[0]);
+        } catch (error) {
+            console.error("Error in fetchUser:", error);
+        }
+    };
+
     const fetchProjects = async () => {
         try {
-            const projectsData = await getAllProjects();
+            const projectsData = await getProjectByName(currentUser);
             setProjects(projectsData);
         } catch (error) {
             console.error("Error in fetchProjects:", error);
@@ -44,6 +62,7 @@ const UserProfile = ({ userData }) => {
     };
 
     useEffect(() => {
+        fetchUser();
         fetchProjects();
         fetchDonations();
     }, []);
@@ -54,81 +73,16 @@ const UserProfile = ({ userData }) => {
             <div className="user-profile-container">
                 {/* Contenedor de Mi Información */}
                 <div className="user-profile">
-                    <div className="informacion-title">
-                        <h2>Mi información</h2>
-                        <i className="fa-solid fa-pencil" onClick={handleEditClick}></i>
-                    </div>
+                    <h2>Mi información</h2> 
                     <div className="user-info">
-                        {isEditing ? (
-                            <>
-                                <p>
-                                    <strong>Nombre:</strong>
-                                    <input
-                                        type="text"
-                                        name="fullName"
-                                        value={editableData.fullName}
-                                        onChange={handleChange}
-                                    />
-                                </p>
-                                <p>
-                                    <strong>Cedula:</strong>
-                                    <input
-                                        type="text"
-                                        name="id"
-                                        value={editableData.id}
-                                        onChange={handleChange}
-                                    />
-                                </p>
-                                <p>
-                                    <strong>Email:</strong>
-                                    <input
-                                        type="text"
-                                        name="email"
-                                        value={editableData.email}
-                                        onChange={handleChange}
-                                    />
-                                </p>
-                                <p>
-                                    <strong>Área de trabajo:</strong>
-                                    <input
-                                        type="text"
-                                        name="workArea"
-                                        value={editableData.workArea}
-                                        onChange={handleChange}
-                                    />
-                                </p>
-                                <p>
-                                    <strong>Cantidad inicial de dinero en cartera:</strong>
-                                    <input
-                                        type="text"
-                                        name="initialBalance"
-                                        value={editableData.initialBalance}
-                                        onChange={handleChange}
-                                    />
-                                </p>
-                                <p>
-                                    <strong>Teléfono:</strong>
-                                    <input
-                                        type="text"
-                                        name="phone"
-                                        value={editableData.phone}
-                                        onChange={handleChange}
-                                    />
-                                </p>
-                                <button onClick={handleEditClick}>Confirmar</button>
-                                <button onClick={handleCancelClick}>Cancelar</button>
-                            </>
-                        ) : (
-                            <>
-                                <p><strong>Nombre:</strong> {editableData.fullName}</p>
-                                <p><strong>Cedula:</strong> {editableData.id}</p>
-                                <p><strong>Email:</strong> {editableData.email}</p>
-                                <p><strong>Área de trabajo:</strong> {editableData.workArea}</p>
-                                <p><strong>Cantidad inicial de dinero en cartera:</strong> ₡{editableData.initialBalance}</p>
-                                <p><strong>Teléfono:</strong> {editableData.phone}</p>
-                            </>
-                        )}
+                        <p><strong>Nombre:</strong> {editableData.name}</p>
+                        <p><strong>Numero de telefono:</strong> {editableData.phone}</p>
+                        <p><strong>Email:</strong> {editableData.email}</p>
+                        <p><strong>Área de trabajo:</strong> {editableData.workArea}</p>
+                        <p><strong>Cantidad inicial de dinero en cartera:</strong> ₡{editableData.wallet}</p>
+                        <p><strong>Teléfono:</strong> {editableData.phone}</p>
                     </div>
+                    <button onClick={handleCambiarContraseña}>Cambiar contraseña</button>
                 </div>
 
                 {/* Contenedor de Mis Proyectos */}
@@ -136,7 +90,7 @@ const UserProfile = ({ userData }) => {
                     <h2>Mis proyectos</h2>
                     <div className="my-project-list">
                         {projects && projects.map((project) => (
-                        <ProyectItem key={project._id} project={project} />
+                            <ProyectItem key={project._id} project={project} itsMine={true}/>
                         ))}
                     </div>
                 </div>

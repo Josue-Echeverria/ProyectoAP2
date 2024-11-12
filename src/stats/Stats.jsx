@@ -9,7 +9,7 @@ const Stats = () => {
   const [cantidadProyectos, setCantidadProyectos] = React.useState(0);
   const [cantidadDonaciones, setCantidadDonaciones] = React.useState(0);
   const [cantidadUsuarios, setCantidadUsuarios] = React.useState(0);
-
+  const [months, setMonths] = React.useState([]);
   const fetchStats = async () => {
     try {
       const response1 = await getDonationsByMonth();
@@ -18,12 +18,23 @@ const Stats = () => {
 
       console.log(response1);
       console.log(response2);
-      console.log(response3);
-
-      // const data = await response.json();
-      //TODO set the state with the actual data
-      setCantidadProyectos([50,20,50,30,40,60]);
-      setCantidadDonaciones([10,20,30,40,50,60]);
+      const months = []
+      const data = []
+      const data2 = []
+      for (const key in response2) {
+        if (response2.hasOwnProperty(key)) {
+          data.push(response2[key]);
+        }
+      }
+      for (const key in response1) {
+        if (response1.hasOwnProperty(key)) {
+          months.push(key);
+          data2.push(response1[key]);
+        }
+      }
+      setCantidadProyectos(data);
+      setCantidadDonaciones(data2);
+      setMonths(months);
       setCantidadUsuarios([response3.inactiveUsers, response3.activeUsers]);
     } catch (error) {
       console.error("Error fetching stats:", error);
@@ -37,7 +48,7 @@ const Stats = () => {
 
   return (
     <div className="stats-dashboard">
-      <h2>Dashboard de Estadísticas</h2>
+      <h1>Dashboard de Estadísticas</h1>
       <div className="chart-container">
         <div className="chart-item">
           {cantidadProyectos ? (<LineChart data={cantidadProyectos} labels={["En revision", "En proceso", "Logrados", "No logrados"]} label={"Cantidad de proyectos"}/>
@@ -46,7 +57,7 @@ const Stats = () => {
           )}
         </div>
         <div className="chart-item">
-          {cantidadDonaciones ? (<LineChart data={cantidadDonaciones} labels={["January", "February", "March", "April", "May", "June"]} label={"Cantidad de donaciones"}/>
+          {cantidadDonaciones ? (<LineChart data={cantidadDonaciones} labels={months} label={"Cantidad de donaciones"}/>
           ) : (
             <p>Cargando...</p>
           )}

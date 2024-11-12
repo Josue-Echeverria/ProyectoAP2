@@ -27,7 +27,10 @@ const Admin = () => {
             <Header isAdmin={true} />
             <Stats/>
             <div className="middle">
-                <DonationList/>
+                <div className="donation-container">
+                    <h1>Lista de donaciones</h1>
+                    <DonationList/>
+                </div>
                 <div className="user-list"> 
                     <UserList  getMentors={false} getMentorsPending={false}/>
                     <UserList  getMentors={false} getMentorsPending={true}/>

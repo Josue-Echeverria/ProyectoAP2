@@ -14,7 +14,7 @@ const Login = () => {
       const data = await verifyUser(userName, password);
       console.log('Sending:', { userName, password });
       if (data.existe) {
-        navigate('/proyect');
+        navigate('/home');
       } else {
         alert('User does not exist or invalid credentials.');
       }

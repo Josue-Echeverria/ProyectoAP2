@@ -5,7 +5,7 @@ import Login from './login/Login';
 import Register from './register/Register';
 import ProyectList from './proyect/proyectList/ProyectList';
 import ProyectDetails from './proyect/proyectDetail/ProyectDetail';
-import CreateProject from './createProject/CreateProject';
+import CreateProject from './proyect/createProject/CreateProject';
 import UserProfile from './users/userProfile/UserProfile';
 import Admin from './admin/Admin';
 import Mentorship from './mentorship/Mentorship';
