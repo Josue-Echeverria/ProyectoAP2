@@ -79,7 +79,7 @@ const Mentorship = () => {
 
 
     const navigate = useNavigate();
-    const isMentor = true; // TODO Replace with actual logic to determine if the user is a mentor
+    const isMentor = false; // TODO Replace with actual logic to determine if the user is a mentor
 
     useEffect(() => {
         if (isMentor) {
@@ -142,7 +142,7 @@ const Mentorship = () => {
                 </div>
                 <div className="request-mentorship">
                     <h1>¿Necesitas un guia para tus proyectos?</h1>
-                    {/* <p>Contratar un mentor puede ser una decisión transformadora para cualquier project manager que busque llevar sus proyectos al siguiente nivel. Un mentor aporta una riqueza de experiencia y conocimientos que pueden ayudar a evitar errores comunes y a superar obstáculos con mayor eficacia. Además, los mentores ofrecen una perspectiva externa valiosa, proporcionando ideas innovadoras y estrategias probadas que pueden optimizar la gestión de proyectos. Invertir en un mentor no solo mejora las habilidades y capacidades del project manager, sino que también aumenta significativamente las probabilidades de éxito del proyecto.</p> */}
+                    <p>Contratar un mentor puede ser una decisión transformadora para cualquier project manager que busque llevar sus proyectos al siguiente nivel. Un mentor aporta una riqueza de experiencia y conocimientos que pueden ayudar a evitar errores comunes y a superar obstáculos con mayor eficacia. Además, los mentores ofrecen una perspectiva externa valiosa, proporcionando ideas innovadoras y estrategias probadas que pueden optimizar la gestión de proyectos. Invertir en un mentor no solo mejora las habilidades y capacidades del project manager, sino que también aumenta significativamente las probabilidades de éxito del proyecto.</p>
                     
                     <button onClick={setRequestIsOpen}>
                         <p>Solicitar mentoria</p>
