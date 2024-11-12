@@ -310,3 +310,68 @@ export const deactivateUser = async (username) => {
     throw error;
   }
 }
+
+export const getUserCounts = async (username) => {
+  try {
+    const response = await fetch(`${API_BASE_URL}/getUserCounts`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        'ngrok-skip-browser-warning': 'any value', // Header to bypass the warning
+      },
+    });
+    
+    return await response.json();
+  }catch (error) {
+    console.error('Error in getStats API call:', error);
+  }
+}
+
+
+export const getProjectCounts = async (username) => {
+  try {
+    const response = await fetch(`${API_BASE_URL}/getProjectCounts`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        'ngrok-skip-browser-warning': 'any value', // Header to bypass the warning
+      },
+    });
+    return await response.json();
+  }catch (error) {
+    console.error('Error in getStats API call:', error);
+  }
+}
+
+
+
+export const getDonationsByMonth = async () => {
+  try {
+    const response = await fetch(`${API_BASE_URL}/getDonationsByMonth`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        'ngrok-skip-browser-warning': 'any value', // Header to bypass the warning
+      },
+      });
+      return await response.json();
+    }catch (error) {
+      console.error('Error in getStats API call:', error);
+    }
+  }
+
+
+  export const getMentor = async () => {
+    try {
+      const response = await fetch(`${API_BASE_URL}/mentors`, {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+          'ngrok-skip-browser-warning': 'any value', // Header to bypass the warning
+        },
+      });
+      return await response.json();
+    } catch (error) {
+      console.error('Error in getMentor API call:', error);    
+    }
+  }

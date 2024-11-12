@@ -7,7 +7,6 @@ import { getAllProjects } from '../api/api';
 import UserList from '../users/userList/UserList';
 import DonationList from '../proyect/donations/donationList/DonationList';
 
-
 const Admin = () => {
     const [projects, setProjects] = React.useState(null);
     
@@ -29,7 +28,10 @@ const Admin = () => {
             <Stats/>
             <div className="middle">
                 <DonationList/>
-                <UserList  getMentors={false}/>
+                <div className="user-list"> 
+                    <UserList  getMentors={false} getMentorsPending={false}/>
+                    <UserList  getMentors={false} getMentorsPending={true}/>
+                </div>
             </div>
             <div className="proyect-container">
                 <h1>Proyectos</h1>
