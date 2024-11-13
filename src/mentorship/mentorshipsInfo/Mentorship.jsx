@@ -1,10 +1,10 @@
 import React, {useState, useEffect} from 'react';
 import { useNavigate } from 'react-router-dom';
-import Header from '../Header/Header';
+import Header from '../../Header/Header';
 import './Mentorship.css';
 import Modal from 'react-modal';
-import UserList from '../users/userList/UserList';
-import { updateMentorStatus } from '../api/api';
+import UserList from '../../users/userList/UserList';
+import { updateMentorStatus } from '../../api/api';
 
 const Mentorship = () => {
     const [formIsOpen, setFormIsOpen] = useState(false);
