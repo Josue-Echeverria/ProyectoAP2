@@ -8,7 +8,7 @@ import ProyectDetails from './proyect/proyectDetail/ProyectDetail';
 import CreateProject from './proyect/createProject/CreateProject';
 import UserProfile from './users/userProfile/UserProfile';
 import Admin from './admin/Admin';
-import Mentorship from './mentorship/Mentorship';
+import Mentorship from './mentorship/mentorshipsInfo/Mentorship';
 import Home from './home/Home';
 import Donar from './proyect/donations/DonaraProyecto/Donar';
 import Eventos from './eventos/EventoList/EventoList';
