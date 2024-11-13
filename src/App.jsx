@@ -11,6 +11,7 @@ import Admin from './admin/Admin';
 import Mentorship from './mentorship/Mentorship';
 import Home from './home/Home';
 import Donar from './proyect/donations/DonaraProyecto/Donar';
+import Eventos from './eventos/EventoList/EventoList';
 
 function App() {
   const userData = {
@@ -31,6 +32,7 @@ function App() {
         <Route path='/mentorship' element={<Mentorship />} />
         <Route path='/home' element={<Home />} />
         <Route path='/donar' element={<Donar userData={userData}/>} />
+        <Route path='/eventos' element={<Eventos />} />
         {/* ADMIN */}
         <Route path='/admin' element={<Admin/>} />
       </Routes>

@@ -1,0 +1,130 @@
+/* Estilos para el contenedor del evento */
+.proyect-item {
+    position: relative;
+    border: 1px solid #ddd;
+    padding: 15px;
+    border-radius: 8px;
+    text-align: center;
+    background-color: #fff;
+    width: 250px;
+    transition: box-shadow 0.3s ease;
+    margin: 10px;
+    box-sizing: border-box;
+  }
+  
+  /* Efecto hover para sombra */
+  .proyect-item:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Título del evento */
+  .proyect-item h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+    color: #333;
+  }
+  
+  /* Descripción del evento */
+  .proyect-item p {
+    font-size: 14px;
+    color: #666;
+  }
+  
+  /* Modalidad y fecha */
+  .proyect-item .modalidad,
+  .proyect-item .fecha {
+    font-size: 14px;
+    color: #888;
+    margin-bottom: 10px;
+  }
+  
+  /* Imagen del evento */
+  .proyect-item img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 8px;
+  }
+  
+  /* Botón para registrarse */
+  .proyect-item button {
+    width: 100%;
+    padding: 10px;
+    background-color: #4CAF50;
+    color: white;
+    font-size: 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-bottom: 10px;
+  }
+  
+  /* Enlace para descargar material */
+  .proyect-item a {
+    font-size: 14px;
+    color: #4CAF50;
+    text-decoration: none;
+  }
+  
+  .proyect-item a:hover {
+    text-decoration: underline;
+  }
+  
+  /* Contenedor de los eventos */
+  .event-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 20px;
+  }
+  
+  .modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  /* Estilos para el contenido del modal */
+  .modal-content {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    width: 400px;
+    max-width: 100%;
+    text-align: center;
+  }
+  
+  .modal-content h2 {
+    margin-bottom: 20px;
+  }
+  
+  .modal-content form div {
+    margin-bottom: 15px;
+  }
+  
+  .modal-content input {
+    width: 100%;
+    padding: 8px;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+  }
+  
+  .modal-content button {
+    padding: 10px;
+    background-color: #4CAF50;
+    color: white;
+    font-size: 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .modal-content button[type="button"] {
+    background-color: #f44336; /* Red color for cancel button */
+  }

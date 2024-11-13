@@ -31,6 +31,9 @@ function Header(props) {
             <a href="/donar">
               Donar a Proyecto
             </a>
+            <a href="/eventos">
+              Eventos
+            </a>
             <a href="/profile">
               <i className="fa-solid fa-user"></i>
             </a>

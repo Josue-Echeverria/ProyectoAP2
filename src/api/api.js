@@ -137,6 +137,28 @@ export const updateProject = async (name, description, goal, endDate, logo) => {
   }
 };
 
+// 5. Update Project
+export const addEvento = async (nombre, modalidad, date, logo, material, creador) => {
+  try {
+  const response = await fetch(`${API_BASE_URL}/createEvent`, {
+    method: 'POST',
+    headers: {
+    'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ nombre, modalidad, date, logo, material, creador }),
+  });
+
+  if (!response.ok) {
+    throw new Error('Network response was not ok');
+  }
+
+  return await response.json();
+  } catch (error) {
+  console.error('Error in updateProject API call:', error);
+  throw error;
+  }
+};
+
 // 6. Get User
 export const getUser = async (username) => {
   try {
@@ -202,6 +224,28 @@ export const getAllProjects = async () => {
     throw error; // Re-throw the error for further handling
   }
   };
+
+// 8. Get All events
+export const getAllEvents = async () => {
+  try {
+    const response = await fetch(`${API_BASE_URL}/events`, { 
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        'ngrok-skip-browser-warning': 'any value', // Header to bypass the warning
+      },
+    });
+  
+    if (!response.ok) {
+      throw new Error('Network response was not ok');
+    }
+    const data = await response.json(); // Parse the JSON response
+    return data; // Return the parsed data
+  } catch (error) {
+    console.error('Error in getAllEvents API call:', error); // Actualizar el mensaje de error
+    throw error; // Re-throw the error for further handling
+  }
+};
 
 // 9. Get All Users
 export const getAllUsers = async () => {

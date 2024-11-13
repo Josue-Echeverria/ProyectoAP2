@@ -7,7 +7,6 @@
     background-color: #fff;
     width: 200px;
     transition: box-shadow 0.3s ease;
-    cursor: pointer;
   }
   
   .proyect-item:hover {
