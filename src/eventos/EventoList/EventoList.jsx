@@ -38,6 +38,8 @@ const EventoList = () => {
     openModal(); // Abre el modal al hacer clic en "Registrarse"
   };
 
+  const currentUser = localStorage.getItem("userName"); // ID del usuario actual
+
   const handleSubmitEvent = async (eventData) => {
     try {
       // Llamamos a la función addEvento para enviar los datos a la base de datos
@@ -47,7 +49,7 @@ const EventoList = () => {
         eventData.date,
         eventData.imageUrl,
         eventData.materialLink,
-        "creadorID" // Puedes reemplazar esto con el ID del usuario que está creando el evento
+        currentUser
       );
       
       console.log("Evento creado exitosamente:", newEvent);
