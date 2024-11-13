@@ -3,7 +3,7 @@ import "./ProyectItem.css";
 import Modal from "react-modal";
 import { useNavigate } from "react-router-dom";
 import { updateProject, addDonation } from "../../api/api";
-const ProyectItem = ({ balance, setBalance, project, itsMine, toDonate, balancee }) => {
+const ProyectItem = ({ balance, setBalance, project, itsMine, toDonate, balancee}) => {
   const [name, setName] = useState(project.name);
   const [description, setDescription] = useState(project.description);
   const [goal, setGoal] = useState(project.goal);
@@ -63,8 +63,10 @@ const ProyectItem = ({ balance, setBalance, project, itsMine, toDonate, balancee
   }
 
   useEffect(() => {
-    setBalance(balancee);
+    if (toDonate);
+      setBalance(balancee);
   },[]);
+
   return (<>
     {toDonate ? (
       <div key={project.id} className="project-card">
