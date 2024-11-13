@@ -40,7 +40,7 @@ const Admin = () => {
                 <h1>Proyectos</h1>
                 <div className="proyect-list-admin">
                     {projects && projects.map((project) => (
-                        <ProyectItem key={project._id} project={project} />
+                        <ProyectItem key={project._id} project={project} toDonate={false} setBalance={()=>{}} />
                     ))}    
                 </div>
             </div>

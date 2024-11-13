@@ -39,7 +39,6 @@ const Donar = () => {
   const handleSearchChange = (e) => {
     const term = e.target.value;
     setSearchTerm(term);
-    // Filtrar proyectos según el término de búsqueda
     const filtered = projects.filter((project) =>
       project.name.toLowerCase().includes(term.toLowerCase())
     );

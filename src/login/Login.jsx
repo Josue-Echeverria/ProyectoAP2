@@ -14,7 +14,10 @@ const Login = () => {
       const data = await verifyUser(userName, password);
       if (data.existe) {
         localStorage.setItem("username", userName);
-        navigate('/home');
+        if (data.isAdmin) 
+          navigate('/admin');
+        else
+          navigate('/home');
       } else {
         alert('User does not exist or invalid credentials.');
       }

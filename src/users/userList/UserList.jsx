@@ -34,7 +34,7 @@ const UserList = (props) => {
         <h2>Lista de Mentores</h2>
         <div className="user-list">
           {users.map((user) => (
-            <UserItem key={user.id} user={user} asMentor={true}/>
+            !user.isAdmin && <UserItem key={user.id} user={user} asMentor={true}/>
           ))}
         </div>
       </div>
@@ -45,7 +45,7 @@ const UserList = (props) => {
             <h1>Solicitudes de usuarios para ser mentores</h1>
             <div className="user-list-admin">
               {users.map((user) => (
-                <UserItem key={user.id} user={user} asMentor={true}/>
+                !user.isAdmin && <UserItem key={user.id} user={user} asMentor={true}/>
               ))}
             </div>
           </>
@@ -54,7 +54,7 @@ const UserList = (props) => {
             <h1>Lista de Usuarios</h1>
             <div className="user-list-admin">
             {users.map((user) => (
-              <UserItem key={user.id} user={user} asMentor={false}/>
+              !user.isAdmin && <UserItem key={user.id} user={user} asMentor={false}/>
             ))}
             </div>
           </>

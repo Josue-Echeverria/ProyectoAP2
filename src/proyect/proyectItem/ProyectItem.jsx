@@ -22,17 +22,19 @@ const ProyectItem = ({ balance, setBalance, project, itsMine, toDonate, balancee
     setDonationAmount({ ...donationAmount, [projectId]: amount });
   };
 
-  const handleDonate = (projectId) => {
+  const handleDonate = async (projectId) => {
     const amount = donationAmount[projectId] || 0;
-    setBalance(balance - amount); // Actualizar el saldo
-    setGathered(gathered + amount); // Actualizar el monto
-    alert(`Has donado ₡${amount} al proyecto ${project.name}`);
-    setDonationAmount({ ...donationAmount, [projectId]: 0 });
     const currentDate = getCurrentDate();
     const currentUser = localStorage.getItem("username");
-    console.log(currentUser, currentDate, amount, project.name);
-    addDonation(currentUser, currentDate, amount, project.name);
-
+    const response = await addDonation(currentUser, currentDate, amount, project.name);
+    if (response.error === "Fondos insuficientes en la billetera"){
+      console.log(response);
+      return alert("Fondos insuficientes en la billetera");
+    }
+    setDonationAmount({ ...donationAmount, [projectId]: 0 });
+    setBalance(balance - amount); 
+    setGathered(gathered + amount); 
+    alert(`Has donado ₡${amount} al proyecto ${project.name}`);
   };
   const customStyles = {
     content: {

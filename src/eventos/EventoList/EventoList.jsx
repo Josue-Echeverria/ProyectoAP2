@@ -38,7 +38,7 @@ const EventoList = () => {
     openModal(); // Abre el modal al hacer clic en "Registrarse"
   };
 
-  const currentUser = localStorage.getItem("userName"); // ID del usuario actual
+  const currentUser = localStorage.getItem("username"); // ID del usuario actual
 
   const handleSubmitEvent = async (eventData) => {
     try {

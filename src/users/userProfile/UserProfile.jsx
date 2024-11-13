@@ -10,6 +10,7 @@ import { useNavigate } from "react-router-dom";
 const UserProfile = ({ userData }) => {
     const [password, setPassword] = useState('');
     const [newPassword, setNewPassword] = useState('');
+    const [currentPassword, setCurrentPassword] = useState('');
     const [editableData, setEditableData] = useState(userData);
     const [projects, setProjects] = useState(null);
     const [formIsOpen, setFormIsOpen] = useState(false);
@@ -42,16 +43,22 @@ const UserProfile = ({ userData }) => {
     const navigate = useNavigate();
     const submitForm = async (e) => {
         e.preventDefault();
-        updatePassword(currentUser, newPassword);
-        navigate('/login');
-        closeForm();
+        if (password !== currentPassword) 
+            alert("La contraseña actual no coincide");
+        else{
+            console.log(currentUser, newPassword);
+            const response = await updatePassword(currentUser, newPassword);
+            console.log(response);
+            navigate('/login');
+            closeForm();
+        }
     };
 
     const fetchUser = async () => {
         try {
             const userData = await getUser(currentUser);
-            console.log(userData);
             setEditableData(userData[0]);
+            setCurrentPassword(userData[0].password);
         } catch (error) {
             console.error("Error in fetchUser:", error);
         }

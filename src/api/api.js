@@ -74,44 +74,35 @@ export const addProject = async (name, description, goal, endDate, creator, logo
 // 3. Add Donation
 export const addDonation = async (name, date, amount, projectName) => {
   try {
-  const response = await fetch(`${API_BASE_URL}/addDonacion`, {
-    method: 'POST',
-    headers: {
-    'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({ name, date, amount, projectName }),
-  });
-
-  if (!response.ok) {
-    throw new Error('Network response was not ok');
-  }
-
-  return await response.json();
+    const response = await fetch(`${API_BASE_URL}/addDonacion`, {
+      method: 'POST',
+      headers: {
+      'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ name, date, amount, projectName }),
+    });
+    return await response.json();
   } catch (error) {
-  console.error('Error in addDonation API call:', error);
+    console.error('Error in addDonation API call:', error);
   throw error;
   }
 };
 
 // 4. Update Password
-export const updatePassword = async (username, password) => {
+export const updatePassword = async (userName, password) => {
   try {
   const response = await fetch(`${API_BASE_URL}/update_password`, {
     method: 'POST',
     headers: {
     'Content-Type': 'application/json',
     },
-    body: JSON.stringify({ username, password }),
+    body: JSON.stringify({ userName, password }),
   });
 
-  if (!response.ok) {
-    throw new Error('Network response was not ok');
-  }
 
-  return await response.json();
+    return await response.json();
   } catch (error) {
-  console.error('Error in updatePassword API call:', error);
-  throw error;
+    console.error('Error in updatePassword API call:', error);
   }
 };
 
@@ -372,7 +363,6 @@ export const getUserCounts = async (username) => {
   }
 }
 
-
 export const getProjectCounts = async (username) => {
   try {
     const response = await fetch(`${API_BASE_URL}/getProjectCounts`, {
@@ -387,8 +377,6 @@ export const getProjectCounts = async (username) => {
     console.error('Error in getStats API call:', error);
   }
 }
-
-
 
 export const getDonationsByMonth = async () => {
   try {
