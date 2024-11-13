@@ -20,7 +20,6 @@ const UserList = (props) => {
         fetchUsers();
 
   }, []);
-  // TODO fetch mentors from the API
   async function fetchMentors() {
     const data = await getMentor();
     setUsers(data);

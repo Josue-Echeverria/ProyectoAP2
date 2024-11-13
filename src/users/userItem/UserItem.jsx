@@ -1,7 +1,8 @@
 import React from "react";
 import "./UserItem.css";
-import { updateMentorStatus } from "../../api/api";
+import { updateMentorStatus, toggleActive } from "../../api/api";
 const UserItem = ({ user , asMentor}) => {
+  const [userStatus, setUserStatus] = React.useState(user.isActive);
   const truncateText = (text, maxLength) => {
     if(text){
       if (text.length <= maxLength) {
@@ -23,6 +24,16 @@ const UserItem = ({ user , asMentor}) => {
     window.location.reload();
   }
 
+  const handleDeactivate = async () => {
+    const response = await toggleActive(user.name, "deactivate");
+    setUserStatus(false);
+  }
+
+  const handleReactivate = async () => {
+    const response = await toggleActive(user.name,"activate");
+    setUserStatus(true);
+  }
+
   return (
     <div className="user-item">
       
@@ -40,10 +51,10 @@ const UserItem = ({ user , asMentor}) => {
           <p>{user.email}</p>
           <p>{user.phone}</p>
           <p>Saldo: {user.wallet}</p>
-          {user.isActive ? (
-            <button className="deactivate-button">Desactivar cuenta</button>
+          {userStatus ? (
+            <button className="deactivate-button" onClick={handleDeactivate}>Desactivar cuenta</button>
           ) : (
-            <button className="reactivate-button">Reactivar cuenta</button>
+            <button className="reactivate-button" onClick={handleReactivate}>Reactivar cuenta</button>
           )}
         </div>
       )}

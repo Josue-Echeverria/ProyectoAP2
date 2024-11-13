@@ -14,13 +14,10 @@ import Donar from './proyect/donations/DonaraProyecto/Donar';
 
 function App() {
   const userData = {
-    fullName: "Harlen",
-    id: "123456",
-    email: "haquiros@estudiantec.cr",
-    workArea: "Software Development",
-    initialBalance: 1000,
-    phone: "8888-8888"
-  };
+    name: 'harlen',
+    email: 'jehaeviaejroiqgmail.com', 
+    password: '1234', 
+  }
   return (
     <div className="App">
       <Routes>

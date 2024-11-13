@@ -12,8 +12,8 @@ const Login = () => {
     e.preventDefault();
     try {
       const data = await verifyUser(userName, password);
-      console.log('Sending:', { userName, password });
       if (data.existe) {
+        localStorage.setItem("username", userName);
         navigate('/home');
       } else {
         alert('User does not exist or invalid credentials.');

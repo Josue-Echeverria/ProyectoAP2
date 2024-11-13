@@ -43,8 +43,8 @@ const Mentorship = () => {
         justifyContent: 'center',
         },
     };
-    const name = 'harlen';
- // TODO QUE HAGA UN SUBMIT MODIFICANDO AL USUARIO  
+
+    const name = localStorage.getItem('username');
     const submitForm = async (e) => {
         e.preventDefault();
         updateMentorStatus( name , 2, cost, experience);
@@ -64,7 +64,6 @@ const Mentorship = () => {
     const closeRequest = () => {
         setRequestIsOpen(false);
     };
-
 
     const navigate = useNavigate();
     const isMentor = false; // TODO Replace with actual logic to determine if the user is a mentor

@@ -407,3 +407,18 @@ export const getDonationsByMonth = async () => {
       console.error('Error in updateMentorStatus API call:', error);
     }
   }
+
+  export const toggleActive = async (name, action) => { 
+    try {
+      const response = await fetch(`${API_BASE_URL}/toggleUserActive`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ name, action }),
+      });
+      return await response.json();
+    } catch (error) {
+      console.error('Error in toggleActive API call:', error);
+    }
+  }

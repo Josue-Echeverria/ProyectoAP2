@@ -5,7 +5,7 @@ import { getDonations, getAllDonations } from "../../../api/api";
 
 const DonationList = ({adminView}) => {
   const [donations, setDonations] = React.useState([]); // Initialize the state with an empty array
-  const currentUser = 'harlen'; // TODO SET CURRENT USER
+  const currentUser = localStorage.getItem("username");
   const fetchDonations = async () => { // Keep this function async
     try {
         if(adminView){

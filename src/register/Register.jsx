@@ -18,17 +18,8 @@ const Register = () => {
       alert("Las contraseñas no coinciden");
       return;
     }
-    // Aquí puedes agregar la lógica para enviar los datos a tu backend
-    console.log("Username:", username);
-    console.log("Email:", email);
-    console.log("Password:", password);
-    console.log("Phone:", phone);
-    console.log("Wallet Amount:", walletAmount);
-    console.log("Work Area:", workArea);
-
     addUser(username, email, password, phone, walletAmount, workArea);
-
-    // TODO set current user
+    localStorage.setItem("username", username);
     navigate('/home');
   };
 

@@ -13,8 +13,7 @@ function CreateProject() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-      // TODO set the creator name as the current user
-    const creator = "harlen";
+    const creator = localStorage.getItem("username");
     addProject(name, description, goal, endDate, creator,logo);
     console.log({ name, description, goal, endDate, logo });
     navigate('/profile');

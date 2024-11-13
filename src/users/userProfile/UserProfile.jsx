@@ -14,8 +14,7 @@ const UserProfile = ({ userData }) => {
     const [projects, setProjects] = useState(null);
     const [formIsOpen, setFormIsOpen] = useState(false);
     const [donations, setDonations] = useState(null);
-    // TODO SET CURRENT USER
-    const currentUser = 'harlen';
+    const currentUser = localStorage.getItem("username");
 
     const customStyles = {
         content: {
@@ -43,12 +42,10 @@ const UserProfile = ({ userData }) => {
     const navigate = useNavigate();
     const submitForm = async (e) => {
         e.preventDefault();
-        
         updatePassword(currentUser, newPassword);
         navigate('/login');
         closeForm();
     };
-
 
     const fetchUser = async () => {
         try {
@@ -88,7 +85,6 @@ const UserProfile = ({ userData }) => {
         <div>
             <Header />
             <div className="user-profile-container">
-                {/* Contenedor de Mi Información */}
                 <div className="user-profile">
                     <h2>Mi información</h2> 
                     <div className="user-info">
@@ -131,8 +127,6 @@ const UserProfile = ({ userData }) => {
                         <button onClick={closeForm} className='close'>X</button>
                     </Modal>
                 </div>
-
-                {/* Contenedor de Mis Proyectos */}
                 <div className="my-projects-container">
                     <h2>Mis proyectos</h2>
                     <div className="my-project-list">
@@ -141,9 +135,6 @@ const UserProfile = ({ userData }) => {
                         ))}
                     </div>
                 </div>
-
-
-                {/* Contenedor de Lista de Donaciones */}
                 <div className="donations-containe">
                     <h2>Lista de Donaciones</h2>
                         <DonationList />

@@ -1,27 +1,39 @@
 import React, { useState, useEffect } from "react";
 import Header from "../../../Header/Header";
 import "./Donar.css";
-import { getAllProjects } from "../../../api/api";
+import { getAllProjects, getUser } from "../../../api/api";
+import ProyectItem from "../../proyectItem/ProyectItem";
 
-const Donar = ({ userData }) => {
+const Donar = () => {
   const [projects, setProjects] = useState([]); // Estado para almacenar todos los proyectos
   const [filteredProjects, setFilteredProjects] = useState([]); // Estado para proyectos filtrados
-  const [donationAmount, setDonationAmount] = useState({});
-  const [balance, setBalance] = useState(userData.initialBalance); // Usando `initialBalance` del usuario
+  const [balance, setBalance] = useState(); // Usando `initialBalance` del usuario
   const [searchTerm, setSearchTerm] = useState(""); // Estado para el término de búsqueda
+  const currentUser = localStorage.getItem("username");
 
   const fetchProjects = async () => {
     try {
-      const projectsData = await getAllProjects(); // Llamada a la API
-      setProjects(projectsData); // Guardar los proyectos en el estado
-      setFilteredProjects(projectsData); // Inicialmente mostrar todos los proyectos
+      const projectsData = await getAllProjects(); 
+      setProjects(projectsData); 
+      setFilteredProjects(projectsData); 
     } catch (error) {
       console.error("Error in fetchProjects:", error);
     }
   };
 
+  const fetchUserWallet = async () => {
+    try {
+      const userData = await getUser(currentUser);
+      console.log(userData);
+      setBalance(userData[0].wallet);
+    } catch (error) {
+      console.error("Error in fetchUserWallet:", error);
+    }
+  }
+
   useEffect(() => {
-    fetchProjects(); // Obtener los proyectos al montar el componente
+    fetchProjects();
+    fetchUserWallet();
   }, []);
 
   const handleSearchChange = (e) => {
@@ -34,24 +46,6 @@ const Donar = ({ userData }) => {
     setFilteredProjects(filtered);
   };
 
-  const handleDonationChange = (projectId, amount) => {
-    if (amount <= balance) {
-      setDonationAmount({ ...donationAmount, [projectId]: amount });
-    } else {
-      alert("La cantidad no puede ser mayor al saldo disponible.");
-    }
-  };
-
-  const handleDonate = (projectId) => {
-    const amount = donationAmount[projectId] || 0;
-    if (amount > 0 && amount <= balance) {
-      setBalance(balance - amount); // Actualizar el saldo
-      alert(`Has donado ₡${amount} al proyecto ${filteredProjects.find(p => p.id === projectId).name}`);
-      setDonationAmount({ ...donationAmount, [projectId]: 0 });
-    } else {
-      alert("Ingresa una cantidad válida para donar.");
-    }
-  };
 
   return (
     <div>
@@ -71,26 +65,7 @@ const Donar = ({ userData }) => {
 
         <div className="project-list">
           {filteredProjects.map((project) => (
-            <div key={project.id} className="project-card">
-              <h3>{project.name}</h3>
-              <img src={project.logo} alt={`${project.name} logo`} className="project-image" />
-              <p>{project.description}</p>
-              <p>Meta: ₡{project.goal.toFixed(2)}</p>
-              <p>Recaudado: ₡{project.gathered.toFixed(2)}</p>
-              <p>Fecha de finalización: {project.endDate}</p>
-              <div className="donation-section">
-                <input
-                  type="number"
-                  placeholder="Cantidad a donar"
-                  value={donationAmount[project.id] || ""}
-                  onChange={(e) =>
-                    handleDonationChange(project.id, parseInt(e.target.value, 10) || 0)
-                  }
-                  max={balance}
-                />
-                <button onClick={() => handleDonate(project.id)}>Donar</button>
-              </div>
-            </div>
+            <ProyectItem toDonate={true} project={project} balance={balance} setBalance={setBalance}/>
           ))}
         </div>
       </div>

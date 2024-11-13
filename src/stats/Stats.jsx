@@ -16,8 +16,6 @@ const Stats = () => {
       const response2 = await getProjectCounts();
       const response3 = await getUserCounts();
 
-      console.log(response1);
-      console.log(response2);
       const months = []
       const data = []
       const data2 = []
