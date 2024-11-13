@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import "./EventoItem.css";
-import Header from "../../Header/Header";
 import EventoItem from "../EventoItem/EventoItem";
-import { getAllEvents } from "../../api/api";
+import { getAllEvents, addEvento } from "../../api/api";
+import Header from "../../Header/Header";
 import Modal from "react-modal";
 
 Modal.setAppElement('#root'); // Establecer el root para accesibilidad
