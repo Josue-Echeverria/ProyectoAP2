@@ -1,7 +1,24 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./Header.css";
+import { getUser } from "../api/api";
 
 function Header(props) {
+  const currentuser = localStorage.getItem("username");
+  const [isMentor, setIsMentor] = React.useState(false);
+
+  const fetchUser = async () => {
+    try {
+      const userData = await getUser(currentuser);
+      setIsMentor(userData[0].isMentor);
+    } catch (error) {
+      console.error("Error in fetchUser:", error);
+    }
+  }
+
+  useEffect(() => {
+    fetchUser();
+  }, []);
+
   return (
     <header className="header">
       {props.isAdmin ? (
@@ -25,9 +42,15 @@ function Header(props) {
             <a onClick={props.clickCreateForm} href="/CreateProject">
               Crear Proyecto
             </a>
-            <a href="/mentorship">
-              Mentoria
-            </a>
+            {isMentor ? (
+              <a href="/mentor">
+                Mentoria
+              </a>
+            ) : (
+              <a href="/mentorship">
+                Mentoria
+              </a>
+            )}       
             <a href="/donar">
               Donar a Proyecto
             </a>
