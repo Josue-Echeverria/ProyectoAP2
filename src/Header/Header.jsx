@@ -15,6 +15,10 @@ function Header(props) {
     }
   }
 
+  const handleCerrarSesion = () => {
+    localStorage.removeItem("username");
+  }
+
   useEffect(() => {
     fetchUser();
   }, []);
@@ -25,9 +29,6 @@ function Header(props) {
         <div className="header-content">
           <a href="#default" className="logo">
             Crowdfunding Admin
-          </a>
-          <a href="login" className="logout">
-            Cerrar sesión
           </a>
         </div>
       ) : (
@@ -63,6 +64,9 @@ function Header(props) {
           </div>
         </div>
       )}
+      <a href="/login" onClick={handleCerrarSesion} className="logOut">
+        Cerrar sesión
+      </a>
     </header>
   );
 }
