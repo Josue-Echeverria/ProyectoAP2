@@ -138,7 +138,7 @@ const UserProfile = ({ userData }) => {
                     <h2>Mis proyectos</h2>
                     <div className="my-project-list">
                         {projects && projects.map((project) => (
-                            <ProyectItem key={project._id} project={project} itsMine={true}/>
+                            <ProyectItem key={project._id} project={project} itsMine={true} toDonate={false} setBalance={()=>{}}/>
                         ))}
                     </div>
                 </div>

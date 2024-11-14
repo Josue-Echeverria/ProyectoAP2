@@ -454,3 +454,69 @@ export const getDonationsByMonth = async () => {
       console.error('Error in toggleActive API call:', error);
     }
   }
+
+export const getAppointments = async (user) => {
+  try {
+    const response = await fetch(`${API_BASE_URL}/getAvailableSlots/${user}`, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+      'ngrok-skip-browser-warning': 'any value', // Header to bypass the warning
+    },
+    });
+
+    console.log("API Response:", response);
+  
+    if (!response.ok) {
+    throw new Error('Network response was not ok');
+    }
+    const data = await response.json(); // Parse the JSON response
+    return data; // Return the parsed data
+  } catch (error) {
+    console.error('Error in getAllProjects API call:', error);
+    throw error; // Re-throw the error for further handling
+  }
+  };
+
+  export const getSlotsByDate = async (mentorName, date) => {
+    try {
+    const response = await fetch(`${API_BASE_URL}/getAvailableSlotsByDate`, {
+      method: 'POST',
+      headers: {
+      'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ mentorName, date }),
+    });
+  
+    if (!response.ok) {
+      throw new Error('Network response was not ok');
+    }
+  
+    return await response.json();
+    } catch (error) {
+    console.error('Error in updatePassword API call:', error);
+    throw error;
+    }
+  };
+
+  export const bookSlot = async (mentorName, date, time, bookedBy) => {
+    try {
+      const response = await fetch(`${API_BASE_URL}/bookSlot`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ mentorName, date, time, bookedBy }),
+      });
+      
+      if (!response.ok) {
+        throw new Error(`Error ${response.status}: ${response.statusText}`);
+      }
+  
+      const data = await response.json();
+      return data;
+    } catch (error) {
+      console.error('Error in booked Slot API call:', error);
+      throw error; // Re-throw the error for further handling if needed
+    }
+  };
