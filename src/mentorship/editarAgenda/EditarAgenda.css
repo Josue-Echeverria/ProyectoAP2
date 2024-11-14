@@ -1,0 +1,81 @@
+.editar-agenda-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .agenda-content {
+    display: flex;
+    gap: 2rem;
+    padding: 20px;
+    width: 80%;
+  }
+  
+  .left-panel, .right-panel, .booked-slots {
+    flex: 1;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 20px;
+    background-color: #f9f9f9;
+  }
+  
+  .left-panel h2, .right-panel h2 {
+    margin-bottom: 20px;
+  }
+  
+  .left-panel input {
+    display: block;
+    margin-bottom: 15px;
+    padding: 8px;
+    width: 100%;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+  }
+  
+  button {
+    padding: 10px 15px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #0056b3;
+  }
+  
+  .right-panel ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .right-panel li {
+    background-color: #e0f7fa;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 4px;
+  }
+
+  .booked-slots ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .booked-slots li {
+    background-color: #dd9680;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 4px;
+  }
+
+  .mensaje {
+    margin-top: 15px;
+    color: green;
+  }
+  
+  .mensaje.error {
+    color: red;
+  }
+
+  

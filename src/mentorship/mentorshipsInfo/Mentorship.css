@@ -69,6 +69,15 @@
     width: 100%;
 }
 
+.form1 input, .form1 textarea{
+    width: 40%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
 .question{
     display: flex;
     flex-direction: row;

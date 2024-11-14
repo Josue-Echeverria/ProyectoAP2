@@ -68,3 +68,9 @@
     width: 100%; /* Asegura que los enlaces ocupen todo el ancho */
   }
 }
+
+.logOut{
+  cursor: pointer;
+  position: absolute;
+  right: 40px;
+}

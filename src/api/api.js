@@ -453,7 +453,55 @@ export const getDonationsByMonth = async () => {
     } catch (error) {
       console.error('Error in toggleActive API call:', error);
     }
+  }  
+
+  export const createSlot = async (mentorName, date, time) => { 
+    try {
+      const response = await fetch(`${API_BASE_URL}/createAvailability`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ mentorName, date, time }),
+      });
+      return await response.json();
+    } catch (error) {
+      console.error('Error in createAvailability API call:', error);
+    }
   }
+
+  export const getSlots = async (username) => {
+    try {
+      const response = await fetch(`${API_BASE_URL}/getAvailableSlots/${username}`, {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+          'ngrok-skip-browser-warning': 'any value', // Header to bypass the warning
+        },
+      });
+      
+      return await response.json();
+    }catch (error) {
+      console.error('Error in getStats API call:', error);
+    }
+  }
+
+  export const getBookedSlots = async (username) => {
+    try {
+      const response = await fetch(`${API_BASE_URL}/getBookedSlotsByMentor/${username}`, {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+          'ngrok-skip-browser-warning': 'any value', // Header to bypass the warning
+        },
+      });
+      
+      return await response.json();
+    }catch (error) {
+      console.error('Error in getStats API call:', error);
+    }
+  }
+  
 
 export const getAppointments = async (user) => {
   try {
