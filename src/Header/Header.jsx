@@ -44,8 +44,8 @@ function Header(props) {
               Crear Proyecto
             </a>
             {isMentor ? (
-              <a href="/mentor">
-                Mentoria
+              <a href="/Agenda">
+                Agenda
               </a>
             ) : (
               <a href="/mentorship">

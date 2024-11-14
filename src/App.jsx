@@ -9,6 +9,7 @@ import CreateProject from './proyect/createProject/CreateProject';
 import UserProfile from './users/userProfile/UserProfile';
 import Admin from './admin/Admin';
 import Mentorship from './mentorship/mentorshipsInfo/Mentorship';
+import EditarAgenda from './mentorship/editarAgenda/EditarAgenda';
 import Home from './home/Home';
 import Donar from './proyect/donations/DonaraProyecto/Donar';
 import Eventos from './eventos/EventoList/EventoList';
@@ -30,6 +31,7 @@ function App() {
         <Route path="/createProject" element={<CreateProject/>} />
         <Route path='/profile' element={<UserProfile userData={userData} />} />
         <Route path='/mentorship' element={<Mentorship />} />
+        <Route path='/Agenda' element={<EditarAgenda />} />
         <Route path='/home' element={<Home />} />
         <Route path='/donar' element={<Donar userData={userData}/>} />
         <Route path='/eventos' element={<Eventos />} />
