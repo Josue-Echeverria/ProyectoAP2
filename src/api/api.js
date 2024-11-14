@@ -453,7 +453,7 @@ export const getDonationsByMonth = async () => {
     } catch (error) {
       console.error('Error in toggleActive API call:', error);
     }
-  }  }
+  }  
 
   export const createSlot = async (mentorName, date, time) => { 
     try {

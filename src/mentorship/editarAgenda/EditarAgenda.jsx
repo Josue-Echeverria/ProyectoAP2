@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Header from "../../Header/Header";
 import "./EditarAgenda.css";
-import { createSlot, getSlots, getBookedSlots} from "../../api/api";
+import { createSlot, getSlots, getBookedSlots } from "../../api/api";
 
 // Función para formatear la fecha de yyyy-mm-dd a dd-mm-yyyy
 function formatFecha(fecha) {
@@ -27,8 +27,10 @@ function EditarAgenda() {
     try {
       const mentorName = localStorage.getItem("username");
       const slots = await getSlots(mentorName);
-      if (slots) {
+      if (slots && slots.length > 0) {
         setAgenda(slots);
+      } else {
+        setAgenda([]);
       }
     } catch (error) {
       console.error("Error al obtener las citas:", error);
@@ -40,14 +42,15 @@ function EditarAgenda() {
     try {
       const mentorName = localStorage.getItem("username");
       const response = await getBookedSlots(mentorName);
-      if (response) {
+      if (response && response.length > 0) {
         setBookedSlots(response);
+      } else {
+        setBookedSlots([]);
       }
     } catch (error) {
       console.error("Error al obtener las citas agendadas:", error);
     }
   };
-
 
   // Llamar a cargarSlots cuando el componente se monte
   useEffect(() => {
@@ -96,7 +99,6 @@ function EditarAgenda() {
     return dateA - dateB;
   });
 
-
   return (
     <div className="editar-agenda-container">
       <Header />
@@ -136,7 +138,7 @@ function EditarAgenda() {
               ))}
             </ul>
           ) : (
-            <p>No hay reservas</p>
+            <p>No hay reservas disponibles</p>
           )}
         </div>
 
