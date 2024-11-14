@@ -22,7 +22,7 @@ const Mentorship = () => {
         marginRight: '-50%',
         transform: 'translate(-50%, -50%)',
         width: '40%',
-        height: '40%',
+        height: 'fit-content',
         display: 'flex',
         flexDirection: 'column',
         },
@@ -125,7 +125,7 @@ const Mentorship = () => {
                             </div>
                             <button type="submit" className='send-button'>Enviar</button>
                         </form>
-                        <button onClick={closeRequest} className='close'>X</button>
+                        <button onClick={closeForm} className='close'>X</button>
                     </Modal>
                 </div>
                 <div className="request-mentorship">
