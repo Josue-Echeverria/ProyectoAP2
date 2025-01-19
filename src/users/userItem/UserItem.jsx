@@ -1,10 +1,16 @@
 import React from "react";
 import "./UserItem.css";
+import { useNavigate } from "react-router-dom";
 import { updateMentorStatus, toggleActive } from "../../api/api";
+
 const UserItem = ({ user , asMentor}) => {
+
   const [userStatus, setUserStatus] = React.useState(user.isActive);
+
+  const navigate = useNavigate();
+
   const truncateText = (text, maxLength) => {
-    if(text){
+    if(text){ 
       if (text.length <= maxLength) {
         return text;
       }
@@ -13,16 +19,12 @@ const UserItem = ({ user , asMentor}) => {
   };
 
   const handleAccept = async () => {
-    const response = await updateMentorStatus(user.name, 1);
-    console.log(response);
-    window.location.reload();
-  }
-
-  const handleReject = async () => {
-    const response = await updateMentorStatus(user.name, 0);
-    console.log(response);
-    window.location.reload();
-  }
+    try {
+      navigate(`/agendar/${user.name}`);
+    } catch (error) {
+      console.error("Error updating mentor status:", error);
+    }
+  };
 
   const handleDeactivate = async () => {
     const response = await toggleActive(user.name, "deactivate");
@@ -44,7 +46,6 @@ const UserItem = ({ user , asMentor}) => {
           <p>{truncateText(user.experience, 85)}</p>
           <p>Precio: {user.price}</p>
           <button className="reactivate-button" onClick={handleAccept}>Aceptar</button>
-          <button className="deactivate-button" onClick={handleReject}>Rechazar</button>
         </div>
       ) : (
         <div className="userInfo">

@@ -13,7 +13,7 @@ import EditarAgenda from './mentorship/editarAgenda/EditarAgenda';
 import Home from './home/Home';
 import Donar from './proyect/donations/DonaraProyecto/Donar';
 import Eventos from './eventos/EventoList/EventoList';
-
+import Agendar from './mentorship/agendar/Agendar';
 function App() {
   const userData = {
     name: 'harlen',
@@ -35,6 +35,7 @@ function App() {
         <Route path='/home' element={<Home />} />
         <Route path='/donar' element={<Donar userData={userData}/>} />
         <Route path='/eventos' element={<Eventos />} />
+        <Route path='/agendar/:user' element={<Agendar />} />
         {/* ADMIN */}
         <Route path='/admin' element={<Admin/>} />
       </Routes>
