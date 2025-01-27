@@ -7,10 +7,7 @@ describe('Integration Tests', () => {
   const existentPassword = 'cabeza';
   const eventName = 'Seminario';
 
-  it('should get that the user exists', async () => {
-    const response = await verifyUser(existentCreator, existentPassword);
-    expect(response.existe).toBe(1);
-  });
+
 
   it('should create an event', async () => {
     const response = await addEvento(eventName
@@ -21,6 +18,43 @@ describe('Integration Tests', () => {
                                     , existentCreator);
     expect(response.message).toBe('Evento creado exitosamente');
   });
+
+  it('should not create an event if the event name is empty', async () => {
+    const response = await addEvento('', 
+                                    'Virtual', 
+                                    '2025-2-10',                 
+                                    'https://st2.depositphotos.com/1768926/10934/v/450/depositphotos_109347560-stock-illustration-water-wave-logo-template.jpg',                      
+                                    'https://normas-apa.org/wp-content/uploads/Guia-Normas-APA-7ma-edicion.pdf',
+                                     existentCreator);
+    expect(response.message).toBe('El campo "Nombre del Evento" es obligatorio');
+  });
+
+  it('should not create an event with a past date', async () => {
+    const response = await addEvento(eventName, 
+                                    'Virtual', 
+                                    '2020-01-01',
+                                    'https://st2.depositphotos.com/1768926/10934/v/450/depositphotos_109347560-stock-illustration-water-wave-logo-template.jpg',
+                                    'https://normas-apa.org/wp-content/uploads/Guia-Normas-APA-7ma-edicion.pdf',
+                                     existentCreator);
+    expect(response.message).toBe('La fecha del evento no puede ser anterior a la fecha actual');
+  });
+  
+  it('should not create an event without an existing user', async () => {
+    const response = await addEvento(eventName, 'Virtual', '2025-2-10',
+                                     'https://st2.depositphotos.com/1768926/10934/v/450/depositphotos_109347560-stock-illustration-water-wave-logo-template.jpg',
+                                     'https://normas-apa.org/wp-content/uploads/Guia-Normas-APA-7ma-edicion.pdf',
+                                     NonExistentcreator);
+    expect(response.message).toBe('Evento no creado');
+  });
+
+  it('should not create an event with an invalid logo URL', async () => {
+    const response = await addEvento(eventName, 'Virtual', '2025-2-10',
+                                     'not-a-valid-url',
+                                     'https://normas-apa.org/wp-content/uploads/Guia-Normas-APA-7ma-edicion.pdf',
+                                     existentCreator);
+    expect(response.message).toBe('El formato del campo "Logo (URL)" no es válido');
+  });
+  
  
   it('should get all the events to confirm to the user that the event was created', async () => {
     const response = await getAllEvents();
@@ -48,9 +82,14 @@ describe('Integration Tests', () => {
   deleteEvento.js en la carpeta src.
   .
   */
+
   it('should delete a resource', async () => {
       const response = await deleteEvento(eventName);
       expect(response).toBe("Successfully deleted the documents.");
   });
-  
+
+  it('should get that the user exists', async () => {
+    const response = await verifyUser(existentCreator, existentPassword);
+    expect(response.existe).toBe(1);
+  });
 });
